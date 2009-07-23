@@ -8,9 +8,9 @@ Agilan is a CodeIgniter-based open source social networking platform. Target aud
 
 As with all things CodeIgniter, you need to pay special attention to the content inside the /system/application folder. The config folder in particular will contain some files that you will need to pay attention to:
 
-* database.php will contain your local database connection strings
-* config.php will contain your local dev server setup strings
-* autoload.php will contain helpers/libraries/models and such that we autoload in the project
+ * database.php will contain your local database connection strings
+ * config.php will contain your local dev server setup strings
+ * autoload.php will contain helpers/libraries/models and such that we autoload in the project
 
 Individual developers will obviously need to make changes to database.php and config.php to match their own environments.
 
@@ -18,10 +18,10 @@ For this reason, please don't recommit your local database.php and config.php fi
 
 Other things:
 
-* If you add a model, please add (in the comments!) a SQL statement for creating the table that goes with that model so we can create our own tables. MySQL only thanks.
+ * If you add a model, please add (in the comments!) a SQL statement for creating the table that goes with that model so we can create our own tables. MySQL only thanks.
 
-* I'm not prepared to deal with views at the moment--I just ginned up some basic stuff and put it in a master view called template.php that is reused throughout the project. You'll notice that the CSS is right there in the head. That's good enough for now--we can fix it later.
+ * I'm not prepared to deal with views at the moment--I just ginned up some basic stuff and put it in a master view called template.php that is reused throughout the project. You'll notice that the CSS is right there in the head. That's good enough for now--we can fix it later.
 
-* When users are first created, I use CI to autogenerate an 8 character password (alphas and numbers) then use md5() to create a 32-character hash that then goes into the users.password field. This is good enough for now, but we'll probably need to revisit as we work.
+ * When users are first created, I use CI to autogenerate an 8 character password (alphas and numbers) then use md5() to create a 32-character hash that then goes into the users.password field. This is good enough for now, but we'll probably need to revisit as we work.
 
-* Likewise, I'm using a simple check of a $_SESSION variable to allow logins. We can replace with some other authentication protocol later.
+ * Likewise, I'm using a simple check of a $_SESSION variable to allow logins. We can replace with some other authentication protocol later.
