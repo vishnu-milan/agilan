@@ -12,3 +12,11 @@ Here are some suggestions for work breakdown. Add your own handle/name and start
  * user profile editing
  * photo upload
  * status updates with threaded comments
+
+
+== iceslice ==
+
+ * online chatting
+ * online blogging
+ * meeting tracking
+(but i m to go a little offline. I'll give my full blood from early September or late august. Meantime someone else may try mine.)
