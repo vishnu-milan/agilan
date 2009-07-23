@@ -2,7 +2,15 @@
 
 = Introduction =
 
-Agilan is a CodeIgniter-based open source social networking platform. Target audience for this software are small businesses that need facebook/linkedin/twitter type functionality inside their own businesses. [Requirements Check out the requirements!]
+Agilan is a CodeIgniter-based open source social networking platform. I chose the name because it means "agile" in Croatian. I don't have any particular affinity to Croatia (other than a very good friend of mine!) but I like the idea that companies can use this software to become more agile--decide faster, change faster, react faster.
+
+Target audience for this software are small businesses that need facebook/linkedin/twitter type functionality inside their own businesses. I plan to use it in my social intranet consulting--you are free to repackage/resell/rewhatever, and doubly so if you contribute to the project.
+
+By the way, I'll be talking about this project at EECI 2009 in Holland this October....
+
+[http://www.twitter.com/myerman Follow me on Twitter!]
+[http://myerman.posterous.com Check out my blog!]
+ [Requirements Check out the requirements!]
 
 = Details =
 
