@@ -36,7 +36,7 @@ Other things:
 
  * I've decided to make full use of the ActiveRecord CI stuff in my models--at least, I'm planning on using it as much as I can. Much simpler that way, and gives us a bit of code portability.
 
- * I've also decided to use all lowercase names for functions, with underscores (_) in between words. So, I'm using verify_user() instead of verifyUser() or VerifyUser(). I may change my mind later, but at least for now I'll try to be consistent!
+ * I've also decided to use all lowercase names for functions, with underscores (___) in between words. So, I'm using verify_user() instead of verifyUser() or VerifyUser(). I may change my mind later, but at least for now I'll try to be consistent!
 
 == One More Thing ==
 This project will not involve any messing around with the CI core classes. If you want to extend functionality, write a helper/library/hook. Period, end of story. We just can't go down that road! :)
