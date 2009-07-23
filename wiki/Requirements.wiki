@@ -6,6 +6,7 @@ Most of these have come from the blog at http://myerman.posterous.com
 
 = Details =
 
+== Users ==
  * Users should be able to register and add info about themselves.
  * This info includes name, phone, email, username, short bio, photo, tags for expertise.
  * PHOTO STILL ON TODO LIST
@@ -41,3 +42,5 @@ Most of these have come from the blog at http://myerman.posterous.com
  * all employees can create a wiki
  * they can assign privs to others to work on their wiki
  * I think we can probably reuse an existing library for this???
+
+== Other Enhancements (Future) ==
