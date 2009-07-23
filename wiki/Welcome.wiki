@@ -25,3 +25,7 @@ Other things:
  * When users are first created, I use CI to autogenerate an 8 character password (alphas and numbers) then use md5() to create a 32-character hash that then goes into the users.password field. This is good enough for now, but we'll probably need to revisit as we work.
 
  * Likewise, I'm using a simple check of a $_SESSION variable to allow logins. We can replace with some other authentication protocol later.
+
+* I've decided to make full use of the ActiveRecord CI stuff in my models--at least, I'm planning on using it as much as I can. Much simpler that way, and gives us a bit of code portability.
+
+* I've also decided to use all lowercase names for functions, with underscores (_) in between words. So, I'm using verify_user() instead of verifyUser() or VerifyUser(). I may change my mind later, but at least for now I'll try to be consistent!
