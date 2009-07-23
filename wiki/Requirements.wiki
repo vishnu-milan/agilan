@@ -1,4 +1,5 @@
-#summary A high-level list of requirements for agilan.
+#summary A high-level list of requirements/specifications for agilan.
+#labels Phase-Requirements
 
 = Introduction =
 
@@ -40,7 +41,12 @@ Most of these have come from the blog at http://myerman.posterous.com
 
 *Wiki*
  * all employees can create a wiki
- * they can assign privs to others to work on their wiki
+ * they can assign privileges to others to work on their wiki
  * I think we can probably reuse an existing library for this???
 
 == Other Enhancements (Future) ==
+
+*Optional Uncensored Features*
+ * online chatting
+ * content rating
+ * meeting tracking
