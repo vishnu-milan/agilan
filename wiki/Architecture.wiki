@@ -9,33 +9,36 @@ Architectural specs corresponding/mapped to high-level specs.
 = Details =
 
 == Users ==
- * (coming)
+ * user table will be referenced from other entity models e.g. bookmarks, status updates, files, blog pages, temp chat messages etc.
 
 == Other Requirements ==
 
 *Status Updates*
- * (coming)
+ * comments/response in 1 level of threads
 
 *Bookmarks*
-  * (coming)
+  * pulling/extracting url info. using cURL ?
  
 *Blogging*
- * (coming)
+ * http://www.open-blog.info/
 
 *File Sharing*
- * (coming)
+ * http://net.tutsplus.com/tutorials/php/creating-a-file-hosting-site-with-codeigniter/
 
 *Wiki*
- * (coming)
+ * (wiki)
 
 == Other Enhancements (Future) ==
 
 === Optional Uncensored Features ===
 *Online Chatting*
- * (coming)
+ * https://blueimp.net/ajax/
 
 *Content Rating*
  * (coming)
 
 *Meeting Tracking*
- * (coming)
+ * Need to maintain an Employee-Manager relationships(so, user table will have to have a Manager-ID attribute). Employees will be notified upon Manager announced a meeting time, users, room etc.
+
+*Web Analytics/Stats*
+ * http://piwik.org/
