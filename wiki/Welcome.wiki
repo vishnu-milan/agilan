@@ -8,9 +8,9 @@ Target audience for this software are small businesses that need facebook/linked
 
 By the way, I'll be talking about this project at EECI 2009 in Holland this October....
 
-[http://www.twitter.com/myerman Follow me on Twitter!]
-[http://myerman.posterous.com Check out my blog!]
- [Requirements Check out the requirements!]
+ * [http://www.twitter.com/myerman Follow me on Twitter!]
+ * [http://myerman.posterous.com Check out my blog!] 
+ * [Requirements Check out the requirements!]
 
 = Details =
 
