@@ -5,15 +5,7 @@
 
 Architectural specs corresponding/mapped to high-level specs.
 
-----
-myerman: My initial thought is that most of the modules should have a user_id so we can keep track of who has created bookmark, made status update, shared file, or blogged. All of these should also have a created timestamp and a tag field.
 
-That way, users can always see who has created something. We can also do things like adding "user x has just uploaded file y" in the status updates to keep employees up to speed on activities. We can also use the tags to do subscriptions and searches.
-
-Your thoughts?
-
-Also -- do you know of any blog/wiki/file upload libraries out there for CI? These are big enough that we should probably reuse, no?
-----
 = Details =
 
 == Users ==
