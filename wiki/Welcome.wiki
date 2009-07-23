@@ -12,7 +12,7 @@ By the way, I'll be talking about this project at EECI 2009 in Holland this Octo
  * [http://myerman.posterous.com Check out my blog!] 
  * [Requirements Check out the requirements!]
 
-= Details =
+= Some Caveats For Contributors/Users =
 
 As with all things CodeIgniter, you need to pay special attention to the content inside the /system/application folder. The config folder in particular will contain some files that you will need to pay attention to:
 
