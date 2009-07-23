@@ -1,0 +1,40 @@
+#summary An architectural specifications for agilan.
+#labels Phase-Design
+
+= Introduction =
+
+Architectural specs corresponding/mapped to high-level specs.
+
+= Details =
+
+== Users ==
+ * (coming)
+
+== Other Requirements ==
+
+*Status Updates*
+ * (coming)
+
+*Bookmarks*
+  * (coming)
+ 
+*Blogging*
+ * (coming)
+
+*File Sharing*
+ * (coming)
+
+*Wiki*
+ * (coming)
+
+== Other Enhancements (Future) ==
+
+=== Optional Uncensored Features ===
+*Online Chatting*
+ * (coming)
+
+*Content Rating*
+ * (coming)
+
+*Meeting Tracking*
+ * (coming)
