@@ -5,6 +5,14 @@
 
 Architectural specs corresponding/mapped to high-level specs.
 
+=Over All=
+ * web based
+ * thick/thin client
+ * built-in multithreading
+ * expose a set of functions as an API ?
+ * utilize external API ?
+ * tiers & layers loosely coupled.
+ * features plugin or module based. so that, other developers can easily extend as per their needs.
 
 = Details =
 
