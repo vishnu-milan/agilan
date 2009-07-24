@@ -38,7 +38,7 @@ Architectural specs corresponding/mapped to high-level specs.
  * (coming)
 
 *Meeting Tracking*
- * Need to maintain an Employee-Manager relationships(so, user table will have to have a Manager-ID attribute). Employees will be notified upon Manager announced a meeting time, users, room etc.
+ * Need to maintain an Employee-Manager relationships(so, user table will have to have a nullable Manager-ID attribute). Employees will be notified upon Manager announced a meeting time, users, room etc.
 
 *Web Analytics/Stats*
  * http://piwik.org/  (pagerank 10 on 10)
