@@ -5,7 +5,7 @@
 
 Architectural specs corresponding/mapped to high-level specs.
 
-=Over All=
+=Overall=
  * It's web based
  * thick/thin client
  * built-in multithreading
@@ -28,10 +28,10 @@ Architectural specs corresponding/mapped to high-level specs.
   * pulling/extracting url info. using cURL ?
  
 *Blogging*
- * http://www.open-blog.info/
+ * We may utilize [http://www.open-blog.info/ this]
 
 *File Sharing*
- * http://net.tutsplus.com/tutorials/php/creating-a-file-hosting-site-with-codeigniter/
+ * We may utilize [http://net.tutsplus.com/tutorials/php/creating-a-file-hosting-site-with-codeigniter/ this]
 
 *Wiki*
  * (wiki)
@@ -40,7 +40,7 @@ Architectural specs corresponding/mapped to high-level specs.
 
 === Optional Uncensored Features ===
 *Online Chatting*
- * https://blueimp.net/ajax/
+ * We may utilize [https://blueimp.net/ajax/ this]
 
 *Content Rating*
  * (coming)
@@ -49,4 +49,4 @@ Architectural specs corresponding/mapped to high-level specs.
  * Need to maintain an Employee-Manager relationships(so, user table will have to have a nullable Manager-ID attribute). Employees will be notified upon Manager announced a meeting time, users, room etc.
 
 *Web Analytics/Stats*
- * http://piwik.org/  (pagerank 10 on 10)
+ * We may utilize [http://piwik.org/ this]  (pagerank 10 on 10)
