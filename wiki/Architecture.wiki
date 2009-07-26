@@ -3,7 +3,7 @@
 
 = Introduction =
 
-Architectural specs corresponding/mapped to high-level specs.
+*Architectural specs corresponding/mapped to high-level specs.*
 
 =Overall=
  * It's web based
