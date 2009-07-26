@@ -11,13 +11,16 @@
  * built-in multithreading
  * expose a set of functions as an API ?
  * utilize external API ?
- * tiers & layers loosely coupled.
+ * layers loosely coupled to promote Soc (separation of concerns).
  * features are plugin or module based. so that, other developers can easily extend as per their needs.
 
 = Details =
 
 == Users ==
  * user table will be referenced from other entity models e.g. bookmarks, status updates, files, blog pages, temp chat messages etc.
+
+== Tables ==
+ * Some tables we may consider (user acconts, permissions, user profiles, privacy, alerts, friends, frnd invitations, status updates, messages, recipients, files, file types, blogs, posts, groups, grp type, grp members, comments, tags, ratings)
 
 == Other Requirements ==
 
