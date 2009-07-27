@@ -2,6 +2,7 @@
 session_start();
 
 class Agilan extends Controller {
+	var $companyname = 'XYZ Industries';
 
 	function Agilan()
 	{
@@ -10,13 +11,51 @@ class Agilan extends Controller {
 		if ($_SESSION['userid'] <= 0){
 			redirect('/welcome/index', 'refresh');
 		}
+		
+		$_SESSION['logged_in_user'] = $this->m_users->get_user($_SESSION['userid']);
+		
 	}
 	
 	function index(){
-		echo "you are logged in!";
+		$data['title'] = 'Welcome to '. $this->companyname.'!';
+		$data['main_view'] = 'agilan/home';
+		$data['sidebar1'] = 'agilan/sidebar1';
+		$data['sidebar2'] = 'agilan/sidebar2';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$this->load->vars($data);
+		$this->load->view('template');
 	}
 	
 
+	function edit_profile(){
+		$data['title'] = 'Edit Your Profile';
+		$data['main_view'] = 'agilan/profile_edit';
+		$data['sidebar1'] = 'agilan/sidebar1';
+		$data['sidebar2'] = 'agilan/sidebar2';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$this->load->vars($data);
+		$this->load->view('template');	
+	}
+
+	function update_profile(){
+		$id = $_SESSION['userid'];
+		$this->m_users->update_user($id);
+		$_SESSION['logged_in_user'] = $this->m_users->get_user($id);
+		redirect("agilan/index", 'refresh');
+	}
+
+	
+	function search(){
+		$input = $this->input->post('searchterm');
+		$data['results'] = $this->m_users->search_users($input);
+		$data['title'] = 'Search Results';
+		$data['main_view'] = 'agilan/search_results';
+		$data['sidebar1'] = 'agilan/sidebar1';
+		$data['sidebar2'] = 'agilan/sidebar2';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$this->load->vars($data);
+		$this->load->view('template');	
+	}
 	
 }
 

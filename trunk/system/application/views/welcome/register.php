@@ -16,8 +16,7 @@ $input = array('name' => 'lastname', 'id' => 'lastname', 'size'=> 40);
 echo form_input($input);
 
 echo form_label('Your email address', 'email');
-$input = array('name' => 'email', 'id' => 'email', 'size'=> 40);
-echo form_input($input);
+echo $user['email'];
 
 echo form_label('Your phone number', 'phone');
 $input = array('name' => 'phone', 'id' => 'phone', 'size'=> 20);
