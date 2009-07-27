@@ -130,20 +130,43 @@ class m_users extends Model{
 		$data = array(
 			'firstname' => xss_clean(substr($this->input->post('firstname'),0,255)),
 			'lastname' => xss_clean(substr($this->input->post('lastname'),0,255)),
-			'email' => xss_clean(substr($this->input->post('email'),0,255)),
 			'phone' => xss_clean(substr($this->input->post('phone'),0,16)),
 			'tags' => xss_clean(substr($this->input->post('tags'),0,255)),
 			'bio' => xss_clean(substr($this->input->post('bio'),0,5000)),
 		);
 
 		if (strlen($this->input->post('password'))){
-			$data = array('password' => $this->input->post('password'));
+			$data['password'] = md5($this->input->post('password'));
 		}			
 			
 		$this->db->where('id',$id);
 		$this->db->update('users',$data);
 		
 	}
+
+
+	function search_users($input){
+		$term = xss_clean(substr($input,0,255));
+		$this->db->select('id,firstname,lastname,email,phone,tags');
+		$this->db->like('firstname', $term);
+		$this->db->orlike('lastname', $term);
+		$this->db->orlike('email', $term);
+		$this->db->orlike('phone', $term);
+		$this->db->orlike('tags', $term);
+		$this->db->orlike('bio', $term);
+		$this->db->where('status','active');	
+		$Q = $this->db->get("users");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result_array() as $row){
+				$data[] = $row;
+			}
+		}else{
+			$data = array();
+		}
+		$Q->free_result();		
+		return $data;	
+	}
+
 	
 	function delete_user($id){
 		$data = array('status'=>'inactive');
