@@ -51,6 +51,22 @@ class m_users extends Model{
 		$Q->free_result();		
 		return $data;		
 	}
+
+
+	//GET A USER BY USERNAME
+	function get_user_by_username($username){
+		$this->db->where('username',$username);
+		$this->db->limit(1);
+		$Q = $this->db->get('users');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row_array();
+		}else{
+			$data = array();
+		}
+		
+		$Q->free_result();		
+		return $data;		
+	}
 	
 	//check validity of email addie!
 	function check_valid_email($email){
