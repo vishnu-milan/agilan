@@ -2,7 +2,6 @@
 session_start();
 
 class Agilan extends Controller {
-	var $companyname = 'XYZ Industries';
 
 	function Agilan()
 	{
@@ -17,11 +16,12 @@ class Agilan extends Controller {
 	}
 	
 	function index(){
-		$data['title'] = 'Welcome to '. $this->companyname.'!';
+		$data['title'] = 'Welcome to your intranet!';
 		$data['main_view'] = 'agilan/home';
 		$data['sidebar1'] = 'agilan/sidebar1';
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
+		$data['updates'] = $this->m_updates->list_updates($_SESSION['userid']);
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
@@ -60,4 +60,4 @@ class Agilan extends Controller {
 }
 
 /* End of file agilan.php */
-/* Location: ./system/application/controllers/welcome.php */
+/* Location: ./system/application/controllers/agilan.php */
