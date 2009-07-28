@@ -1,7 +1,7 @@
 <?php
 
 
-echo heading("Search Results",2);
+echo heading("All Users",2);
 
 if (count($results)){
 	foreach ($results as $id => $person){
@@ -11,6 +11,7 @@ if (count($results)){
 			echo anchor("users/follow/".$person['id'], "follow status updates");
 			echo br();
 		}
+		
 		echo "Email: ". $person['email'];
 		echo br();
 		echo "Phone: ". $person['phone'];
