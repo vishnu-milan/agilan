@@ -21,7 +21,9 @@ class Agilan extends Controller {
 		$data['sidebar1'] = 'agilan/sidebar1';
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
-		$data['updates'] = $this->m_updates->list_updates($_SESSION['userid']);
+		$following = $this->m_follows->get_following($_SESSION['userid']);
+		$following[] = $_SESSION['userid'];
+		$data['updates'] = $this->m_updates->list_updates($following);
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
@@ -36,6 +38,11 @@ class Agilan extends Controller {
 		$this->load->vars($data);
 		$this->load->view('template');	
 	}
+
+	 function logout(){
+		unset($_SESSION['userid']);
+		redirect('welcome/index','refresh'); 	
+	 }
 
 	function update_profile(){
 		$id = $_SESSION['userid'];

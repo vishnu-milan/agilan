@@ -14,11 +14,13 @@ class m_updates extends Model{
 		parent::Model();
 	}
 	
-	//LIST USERS
-	function list_updates($userid){
+	//LIST UPDATES
+	function list_updates($list_of_ids){
+		//$string = implode(",",$list_of_ids);
+		$this->db->where_in("user_id",$list_of_ids);
 		$this->db->order_by('created','asc');
 		$this->db->limit(100);
-		$this->db->where('user_id',$userid);
+		//$this->db->where('user_id',$userid);
 		$Q = $this->db->get("updates");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result_array() as $row){
@@ -31,7 +33,7 @@ class m_updates extends Model{
 		return $data;	
 	}
 	
-	//GET A USER
+	//GET AN UPDATE
 	function get_update($id){
 		$this->db->where('id',$id);
 		$this->db->limit(1);
@@ -61,6 +63,7 @@ class m_updates extends Model{
 	}
 	
 	
+	//SEARCH UPDATES
 	function search_updates($input){
 		$term = xss_clean(substr($input,0,255));
 		$this->db->select('id,user_id,udpate');

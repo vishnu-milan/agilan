@@ -82,6 +82,7 @@ class m_users extends Model{
 		}		
 	}
 
+	//COUNT USERS
 	function count_user($username,$email){
 		$Q = $this->db->query("select count(*) as usercount from users where username='$username' or email='$email'");
 		if ($Q->num_rows() > 0){
@@ -124,7 +125,7 @@ class m_users extends Model{
 	}
 	
 	
-	
+	//UPDATE USER
 	function update_user($id){
 
 		$data = array(
@@ -145,9 +146,10 @@ class m_users extends Model{
 	}
 
 
+	//SEARCH USERS
 	function search_users($input){
 		$term = xss_clean(substr($input,0,255));
-		$this->db->select('id,firstname,lastname,email,phone,tags');
+		$this->db->select('id,username,firstname,lastname,email,phone,tags');
 		$this->db->like('firstname', $term);
 		$this->db->orlike('lastname', $term);
 		$this->db->orlike('email', $term);
@@ -168,6 +170,7 @@ class m_users extends Model{
 	}
 
 	
+	//DELETE USER
 	function delete_user($id){
 		$data = array('status'=>'inactive');
 		$this->db->where('id',$id);
