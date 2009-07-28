@@ -26,7 +26,16 @@ class Users extends Controller {
 		$this->load->view('template');
 	}
 	
-
+	function home($username){
+		$data['title'] = 'See profile for '. $username;
+		$data['main_view'] = 'agilan/user_home';
+		$data['sidebar1'] = 'agilan/sidebar1';
+		$data['sidebar2'] = 'agilan/sidebar2';
+		$data['user'] = $this->m_users->get_user_by_username($username);
+		$data['updates'] = $this->m_updates->list_updates($data['user']['id'],10);
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
 
 	function follow($id){
 		$myid = $_SESSION['userid'];

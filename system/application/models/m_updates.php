@@ -15,11 +15,11 @@ class m_updates extends Model{
 	}
 	
 	//LIST UPDATES
-	function list_updates($list_of_ids){
+	function list_updates($list_of_ids,$limit=100){
 		//$string = implode(",",$list_of_ids);
 		$this->db->where_in("user_id",$list_of_ids);
 		$this->db->order_by('created','asc');
-		$this->db->limit(100);
+		$this->db->limit($limit);
 		//$this->db->where('user_id',$userid);
 		$Q = $this->db->get("updates");
 		if ($Q->num_rows() > 0){
