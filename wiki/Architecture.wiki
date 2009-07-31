@@ -72,7 +72,7 @@ Terms (pk_TermID, Terms,CreateDate,TimeStamp)
 
 [user profiles]
 The Profiles tables
-Profiles (pk_ProfileID,fk_AccountID, ProfileName[char,nullable],CreateDate[datetime,nullable],LastUpdateDate[datetime,nullable],YearOfFirstTank,NumberOfTanksOwned,NumberOfFishOwned,LevelOfExperienceTypeID,IMMSN,IMAOL,IMGIM,IMYIM,IMICQ,IMSkype,Signature,Timestamp,Avatar[binary,nullable],AvatarMimeType[char,nullable],UseGravatar[int])
+Profiles (pk_ProfileID,fk_AccountID, ProfileName[char,nullable],CreateDate[datetime,nullable],LastUpdateDate[datetime,nullable],LevelOfExperienceTypeID,IMMSN,IMAOL,IMGIM,IMYIM,IMICQ,IMSkype,Signature,Timestamp,Avatar[binary,nullable],AvatarMimeType[char,nullable])
 ProfileAttributes (pk_ProfileAttributeID,fk1_ProfileID,fk2_ProfileAttributeTypeID, Response[char],CreateDate,TimeStamp)
 ProfileAttributeTypes (pk_ProfileAttributeTypeID,fk_PrivacyFlagTypeID, AttributeType[char],SortOrder[int])
 LevelOfExperienceType (pk_LevelOfExperienceTypeID, LevelOfExperience[char],TimeStamp,SortOrder[int])
@@ -146,4 +146,10 @@ SystemObjectRatingOptions (pk_SystemObjectRatingOptionID,fk_SystemObjectID, Name
 Tags (pk_TagID, Name,Count,TimeStamp,CreateDate)  
 SystemObjectTags (pk_SystemObjectTagID,fk1_SystemObjectID,fk2_CreatedByAccountID,fk3_TagID, TimeStamp,SystemObjectRecordID,CreateDate,CreatedByUsername)
 Comments (pk_CommentID,fk1_CommentsByAccountID,fk2_SystemObjectID, TimeStamp,Body,CreateDate,CommentsByUsername,SystemObjectRecordID)
+
+
+[filtering]
+ContentFilters (pk_ContentFilterID,fk_AccountID, StringToFilter,ReplaceWith,CreateDate,TimeStamp)
+
+
 }}}
