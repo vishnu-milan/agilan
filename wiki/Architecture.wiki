@@ -62,7 +62,7 @@
 *omit the colors*
 
 {{{
-[user accounts]
+[users]
 Accounts (pk_AccountID,fk1_TermID,fk2_ManagerAccountID[nullable], FirstName,LastName,Email,EmailVerified,zip,Username,Password,BirthDate,CreateDate,LastUpdateDate,Timestamp,AgreedToTermsDate)
 Permissions (pk_PermissionID, Name,Timestamp)
 AccountPermissions (pk_apid,fk1_AccountID,fk2_PermissionID, Timestamp)
