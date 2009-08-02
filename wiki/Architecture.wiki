@@ -62,10 +62,10 @@ My original thought was to have it be internal only, no outsiders yet. That's a 
 
 Some other thoughts on nomenclature:
 
-* all field names are lower case
-* use _ between words 
-* use id as primary field name
-* fk id is description_id (like user_id to point to users table)
+ * all field names are lower case
+ * use _ between words 
+ * use id as primary field name
+ * fk id is description_id (like user_id to point to users table)
 
 
 The friends thing can be handled with the follows table. You simply track who the follower_id is, and who the following_id is, and you can keep track of each other's status updates. This is already set up and coded, I just need to test with multiple users.
