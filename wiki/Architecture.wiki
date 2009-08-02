@@ -57,6 +57,61 @@
 
 ----
 
+= THOUGHTS ON TABLES =
+My original thought was to have it be internal only, no outsiders yet. That's a pretty good thought to have the ability to share with customers and vendors, though--I like it. Maybe for a later version? That way we can do away with groups, permissions, privacy, etc.
+
+Some other thoughts on nomenclature:
+
+* all field names are lower case
+* use _ between words 
+* use id as primary field name
+* fk id is description_id (like user_id to point to users table)
+
+
+The friends thing can be handled with the follows table. You simply track who the follower_id is, and who the following_id is, and you can keep track of each other's status updates. This is already set up and coded, I just need to test with multiple users.
+
+Alerts/notifications...yeah, we're going to need this, big time. People have to know when someone has put up a file, blogged, whatever. Actually the best way to handle this is to have whatever it is you are doing actually show up in your status updates. That way if you are following someone, you see what they are up to. Perfect.
+
+My other idea was to use tags to be able to follow different content--I'm not sure if we should have a centralized table for tags and then use mapping tables to point at the different content types (such as blogs, media files, etc) or whether it will be okay to just have a tags field in each of the different tables. Probably the former is best and will keep us from going mad. But the latter is easier for now.
+
+Private messaging can be handled really simply. One table:
+{{{
+id
+from_id (fk to users)
+to_id (fk to users)
+subject
+message
+created
+location (inbox/sent/archive)
+}}}
+
+No folders on messages, they are either in your inbox, your sent messages, or an archive.
+
+
+On media galleries, no folders, we'll use tags to keep track of how they are organized. We can keep track of other metadata as needed:
+
+{{{
+id
+user_id
+title
+description
+location
+file_type
+file_size
+created
+tags
+}}}
+
+It occurs to me just now that the photos for the users table is probably best handled as a photo_id -- an fk to the media table. Hmmmmmmmmm.
+
+I don't have any ideas on wikis, and I think we should probably move forward on using open blog as an integration point.
+
+Remember, the goal is to be able to actually have something working by the time I get to Holland in October. When we show it to them, they can join us and we can rev it to version whatever. :)
+
+
+
+
+
 =*TABLES WITH COLUMNS*=
 
 *omit the colors*
