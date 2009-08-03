@@ -18,7 +18,7 @@ class m_updates extends Model{
 	function list_updates($list_of_ids,$limit=100){
 		//$string = implode(",",$list_of_ids);
 		$this->db->where_in("user_id",$list_of_ids);
-		$this->db->order_by('created','asc');
+		$this->db->order_by('created','desc');
 		$this->db->limit($limit);
 		//$this->db->where('user_id',$userid);
 		$Q = $this->db->get("updates");
