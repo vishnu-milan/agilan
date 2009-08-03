@@ -20,7 +20,7 @@ if (count($updates)){
 					"<small>".$list['created'];
 	
 		if ($ID != $_SESSION['userid']){
-			echo " " . anchor('users/unfollow', 'unfollow');
+			echo " " . anchor('users/unfollow/'. $ID, 'unfollow');
 		}
 		echo "</small></p>";
 	}

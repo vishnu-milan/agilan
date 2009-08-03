@@ -33,8 +33,8 @@ class m_follows extends Model{
 		$this->db->where('follower_id',$follower_id);
 		$Q = $this->db->get("follows");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
-				$data[] = $row;
+			foreach ($Q->result() as $row){
+				$data[] = $row->following_id;
 			}
 		}else{
 			$data = array();
