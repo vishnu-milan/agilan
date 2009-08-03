@@ -86,6 +86,10 @@ class m_messages extends Model{
 	
 	}
 	
+	function send_message(){
+	
+	}
+	
 }//end class
 
 ?>

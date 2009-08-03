@@ -20,6 +20,8 @@ class m_follows extends Model{
 		
 	}
 	
+
+	
 	function unfollow($follower_id,$following_id){
 		$this->db->where('follower_id', $follower_id);
 		$this->db->where('following_id', $following_id);

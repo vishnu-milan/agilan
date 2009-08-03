@@ -12,7 +12,17 @@ echo form_close();
 
 
 if (count($updates)){
-	print_r($updates);
-
+	foreach ($updates as $key => $list){
+		$ID = $list['user_id'];
+		$U = $usernames[$ID];
+		echo "<p><b>".$U . ":</b> " .
+					$list['update'] . "<br/>".
+					"<small>".$list['created'];
+	
+		if ($ID != $_SESSION['userid']){
+			echo " " . anchor('users/unfollow', 'unfollow');
+		}
+		echo "</small></p>";
+	}
 }
 ?>

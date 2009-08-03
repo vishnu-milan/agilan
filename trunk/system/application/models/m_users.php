@@ -24,14 +24,29 @@ class m_users extends Model{
 	
 	//LIST USERS
 	function list_users(){
+		$data = array();
 		$this->db->order_by('username','asc');
 		$Q = $this->db->get("users");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result_array() as $row){
 				$data[] = $row;
 			}
-		}else{
-			$data = array();
+		}
+		$Q->free_result();		
+		return $data;	
+	}
+
+
+	//GET USERNAMES
+	function list_user_names(){
+		$data = array();
+		$this->db->select("id,username");
+		$this->db->order_by('username','asc');
+		$Q = $this->db->get("users");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->id] = $row->username;
+			}
 		}
 		$Q->free_result();		
 		return $data;	
