@@ -21,6 +21,7 @@ class Users extends Controller {
 		$data['sidebar1'] = 'agilan/sidebar1';
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
+		$data['following'] = $this->m_follows->get_following($_SESSION['userid']);
 		$data['results'] = $this->m_users->list_users();
 		$this->load->vars($data);
 		$this->load->view('template');

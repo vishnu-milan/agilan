@@ -8,8 +8,13 @@ if (count($results)){
 		echo anchor("users/home/".$person['username'], $person['firstname'] . " ". $person['lastname']);
 		echo br();
 		if ($person['id'] != $_SESSION['userid']){
-			echo anchor("users/follow/".$person['id'], "follow status updates");
-			echo br();
+			if (in_array($person['id'],$following)){
+				echo anchor("users/unfollow/".$person['id'], "stop following");
+				echo br();			
+			}else{
+				echo anchor("users/follow/".$person['id'], "follow status updates");
+				echo br();
+			}
 		}
 		
 		echo "Email: ". $person['email'];
