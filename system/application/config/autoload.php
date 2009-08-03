@@ -108,7 +108,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('m_users','m_updates','m_follows');
+$autoload['model'] = array('m_users','m_updates','m_follows','m_files','m_messages','m_tags');
 
 
 

@@ -12,3 +12,6 @@ echo heading("My Tags", 3);
 ?>
 
 tags go here
+
+
+<?php echo heading("Upload files",3); ?>
