@@ -7,11 +7,10 @@ echo form_submit('search people','search people');
 echo form_close();
 echo br();
 echo anchor("users/index", "see all users");
-
-echo heading("My Tags", 3);
+echo br();
+echo anchor("agilan/edit_profile",'edit profile');
+echo br();
+echo anchor("agilan/index",'back home');
+echo br();
+echo anchor("agilan/logout",'logout');
 ?>
-
-tags go here
-
-
-<?php echo heading("Upload files",3); ?>
