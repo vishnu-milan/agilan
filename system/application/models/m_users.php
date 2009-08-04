@@ -25,7 +25,7 @@ class m_users extends Model{
 	//LIST USERS
 	function list_users(){
 		$data = array();
-		$this->db->order_by('username','asc');
+		$this->db->order_by('lastname','asc');
 		$Q = $this->db->get("users");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result_array() as $row){
