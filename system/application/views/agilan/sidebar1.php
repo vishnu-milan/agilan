@@ -1,9 +1,12 @@
 <?php
 echo heading("Welcome, " . $user['firstname'],3);
 echo br(2);
-echo anchor("agilan/edit_profile",'edit profile');
-echo br();
-echo anchor("agilan/index",'back home');
-echo br();
-echo anchor("agilan/logout",'logout');
+
+
+echo heading("My Tags", 3);
 ?>
+
+tags go here
+
+
+<?php echo heading("Upload files",3); ?>
