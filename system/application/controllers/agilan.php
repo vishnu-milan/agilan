@@ -24,6 +24,7 @@ class Agilan extends Controller {
 		$following = $this->m_follows->get_following($_SESSION['userid']);
 		$following[] = $_SESSION['userid'];
 		$data['updates'] = $this->m_updates->list_updates($following);
+		$data['comments'] = $this->m_comments->list_comments(array_keys($data['updates']),'updates');
 		$data['usernames'] = $this->m_users->list_user_names();
 		$data['following'] = $following;
 		$this->load->vars($data);
