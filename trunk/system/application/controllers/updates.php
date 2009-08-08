@@ -18,8 +18,6 @@ class Updates extends Controller {
 		redirect('agilan/index', 'refresh');
 	}
 	
-
-
 	
 }
 

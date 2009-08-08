@@ -16,6 +16,7 @@ class m_updates extends Model{
 	
 	//LIST UPDATES
 	function list_updates($list_of_ids,$limit=100){
+		$data = array();
 		//$string = implode(",",$list_of_ids);
 		$this->db->where_in("user_id",$list_of_ids);
 		$this->db->order_by('created','desc');
@@ -23,11 +24,9 @@ class m_updates extends Model{
 		//$this->db->where('user_id',$userid);
 		$Q = $this->db->get("updates");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
-				$data[] = $row;
+			foreach ($Q->result() as $row){
+				$data[$row->id] = $row;
 			}
-		}else{
-			$data = array();
 		}
 		$Q->free_result();		
 		return $data;	
