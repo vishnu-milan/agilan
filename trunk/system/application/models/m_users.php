@@ -210,6 +210,7 @@ class m_users extends Model{
 
 	//SEARCH USERS
 	function search_users($input){
+		$data = array();
 		$term = xss_clean(substr($input,0,255));
 		$this->db->select('id,username,firstname,lastname,email,phone');
 		$this->db->like('firstname', $term);
@@ -223,8 +224,6 @@ class m_users extends Model{
 			foreach ($Q->result_array() as $row){
 				$data[] = $row;
 			}
-		}else{
-			$data = array();
 		}
 		$Q->free_result();		
 		return $data;	

@@ -8,6 +8,13 @@ CREATE TABLE `tags` (
 `user_id` INT NOT NULL ,
 `created` TIMESTAMP NOT NULL
 ) ENGINE = MYISAM ;
+
+
+CREATE TABLE `tag_follows` (
+`user_id` INT NOT NULL ,
+`tag` VARCHAR( 128 ) NOT NULL ,
+PRIMARY KEY ( `user_id` , `tag_id` )
+) ENGINE = MYISAM ;
 */
 
 
@@ -17,7 +24,59 @@ class m_tags extends Model{
 		parent::Model();
 	}
 	
-	function list_all_tags(){
+	function list_tags($userid){
+		$data = array();
+		$this->db->select("tag_id");
+		$this->db->where("user_id",$userid);
+		$Q = $this->db->get("tag_follows");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$list_of_tags[] = $row->tag_id;
+			}
+		}
+		
+		$this->db->where_in("id",$list_of_tags);
+		$this->db->order_by('tag','asc');
+		$Q = $this->db->get("updates");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->id] = $row;
+			}
+		}
+		$Q->free_result();		
+		return $data;			
+
+	}
+
+
+
+	function check_tag_exists($tag){
+		$this->db->select('id');
+		$this->db->like('tag', $tag);
+		$this->db->limit(1);
+		$Q = $this->db->get("updates");
+		if ($Q->num_rows() > 0){
+			$row = $Q->row();
+			return $row->id;
+		}else{
+			return 0;
+		}
+		
+	}
+
+
+
+	function follow_tag($tag){	
+		$userid = $_SESSION['userid'];
+		$data = array(
+				'tag' => xss_clean($tag),
+				'user_id' => $userid,
+			);
+			
+		$this->db->insert("tag_follows",$data);				
+	}
+	
+	function unfollow_tag(){
 	
 	}
 	
@@ -26,6 +85,9 @@ class m_tags extends Model{
 	}
 	
 	function delete_tag($id){
+		$this->db->limit(1);
+		$this->db->where('id', $id);
+		$this->db->delete('tags');	
 	
 	}
 	
