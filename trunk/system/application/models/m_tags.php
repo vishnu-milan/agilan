@@ -26,23 +26,16 @@ class m_tags extends Model{
 	
 	function list_tags($userid){
 		$data = array();
-		$this->db->select("tag_id");
+		$this->db->select("tag");
 		$this->db->where("user_id",$userid);
 		$Q = $this->db->get("tag_follows");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
-				$list_of_tags[] = $row->tag_id;
+				$data[] = $row->tag;
 			}
 		}
 		
-		$this->db->where_in("id",$list_of_tags);
-		$this->db->order_by('tag','asc');
-		$Q = $this->db->get("updates");
-		if ($Q->num_rows() > 0){
-			foreach ($Q->result() as $row){
-				$data[$row->id] = $row;
-			}
-		}
+
 		$Q->free_result();		
 		return $data;			
 
@@ -54,7 +47,7 @@ class m_tags extends Model{
 		$this->db->select('id');
 		$this->db->like('tag', $tag);
 		$this->db->limit(1);
-		$Q = $this->db->get("updates");
+		$Q = $this->db->get("tags");
 		if ($Q->num_rows() > 0){
 			$row = $Q->row();
 			return $row->id;
@@ -76,13 +69,33 @@ class m_tags extends Model{
 		$this->db->insert("tag_follows",$data);				
 	}
 	
-	function unfollow_tag(){
+	function unfollow_tag($tag){
+		$userid = $_SESSION['userid'];
+		$this->db->limit(1);
+		$this->db->where('tag', $tag);
+		$this->db->where('user_id', $userid);
+		$this->db->delete('tag_follows');	
 	
 	}
 	
+
 	function list_objects($tag){
-	
+		$data = array();
+		$this->db->where("tag",$tag);
+		$Q = $this->db->get("tags");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[] = $row;
+			}
+		}
+		
+		$Q->free_result();		
+		return $data;				
 	}
+
+
+
+
 	
 	function delete_tag($id){
 		$this->db->limit(1);
