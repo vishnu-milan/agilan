@@ -11,6 +11,6 @@ echo br();
 echo anchor("agilan/edit_profile",'edit profile');
 echo br();
 echo anchor("agilan/index",'back home');
-echo br();
+echo br(3);
 echo anchor("agilan/logout",'logout');
 ?>

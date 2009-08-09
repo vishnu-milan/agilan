@@ -49,7 +49,11 @@ class Agilan extends Controller {
 
 	function update_profile(){
 		$id = $_SESSION['userid'];
-		$this->m_users->update_user($id);
+		$try = $this->m_users->update_user($id);
+		
+		$tags = xss_clean(substr($_SESSION['tags'],0,255));
+		$this->m_tags->add_tags($tags,'users',$try);	
+		
 		$_SESSION['logged_in_user'] = $this->m_users->get_user($id);
 		redirect("agilan/index", 'refresh');
 	}
