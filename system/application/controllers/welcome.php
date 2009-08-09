@@ -46,7 +46,13 @@ class Welcome extends Controller {
 		
 		if ($try){
 			$data['title'] = 'Thanks for registering';
-			$data['main_view'] = 'welcome/thanks';		
+			$data['main_view'] = 'welcome/thanks';
+						
+			//add tags
+			$tags = xss_clean(substr($_SESSION['tags'],0,255));
+			$this->m_tags->add_tags($tags,'users',$try);
+			
+			
 		}else{
 			$data['title'] = 'There was a problem!';
 			$data['main_view'] = 'welcome/oops';				

@@ -54,31 +54,55 @@ class m_users extends Model{
 	
 	//GET A USER
 	function get_user($id){
+		$data = array();
 		$this->db->where('id',$id);
 		$this->db->limit(1);
 		$Q = $this->db->get('users');
 		if ($Q->num_rows() > 0){
 			$data = $Q->row_array();
-		}else{
-			$data = array();
 		}
+		
+		unset($data['tags']);
+		$data['tags'] = $this->get_user_tags($id);
+
 		
 		$Q->free_result();		
 		return $data;		
 	}
 
 
+
+	//GET USER TAGS
+	function get_user_tags($id){
+		$this->db->select('tag');
+		$this->db->where('object','users');
+		$this->db->where('object_id',$id);
+		$Q = $this->db->get('tags');
+		
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$tags[] = $row->tag;
+			}
+		}		
+		
+		//print_r($tags);
+		
+		$tags  = implode("," , $tags);	
+		return $tags;
+	}
+
 	//GET A USER BY USERNAME
 	function get_user_by_username($username){
+		$data = array();
 		$this->db->where('username',$username);
 		$this->db->limit(1);
 		$Q = $this->db->get('users');
 		if ($Q->num_rows() > 0){
 			$data = $Q->row_array();
-		}else{
-			$data = array();
 		}
-		
+		unset($data['tags']);
+		$data['tags'] = $this->get_user_tags($id);
+
 		$Q->free_result();		
 		return $data;		
 	}
@@ -130,7 +154,7 @@ class m_users extends Model{
 		$usercount = $this->count_user($username,$email);
 		$random = random_string('alnum', 8);
 		
-		if ($usercount ==0){
+		if ($usercount == 0){
 			$now = date("Y-m-d h:i:s");
 			$data = array(
 				'firstname' => xss_clean(substr($this->input->post('firstname'),0,255)),
@@ -138,7 +162,6 @@ class m_users extends Model{
 				'status' => 'active',
 				'email' => xss_clean(substr($this->input->post('email'),0,255)),
 				'phone' => xss_clean(substr($this->input->post('phone'),0,16)),
-				'tags' => xss_clean(substr($this->input->post('tags'),0,255)),
 				'bio' => xss_clean(substr($this->input->post('bio'),0,5000)),
 				'created' => $now,
 				'username' => xss_clean($username),
@@ -146,9 +169,14 @@ class m_users extends Model{
 			);
 			
 			$this->db->insert("users",$data);
+			$last_insert_id = $this->db->insert_id();
+			
 			$_SESSION['random_pw'] = $random;
 			$_SESSION['username'] = $username;
-			return 1;
+			$_SESSION['tags'] = $this->input->post('tags');
+
+			
+			return $this->db->insert_id();
 
 		}else{
 			return 0;
@@ -163,7 +191,6 @@ class m_users extends Model{
 			'firstname' => xss_clean(substr($this->input->post('firstname'),0,255)),
 			'lastname' => xss_clean(substr($this->input->post('lastname'),0,255)),
 			'phone' => xss_clean(substr($this->input->post('phone'),0,16)),
-			'tags' => xss_clean(substr($this->input->post('tags'),0,255)),
 			'bio' => xss_clean(substr($this->input->post('bio'),0,5000)),
 		);
 
@@ -173,19 +200,22 @@ class m_users extends Model{
 			
 		$this->db->where('id',$id);
 		$this->db->update('users',$data);
-		
+			
+		$_SESSION['tags'] = $this->input->post('tags');
+			
+		return $id;
+					
 	}
 
 
 	//SEARCH USERS
 	function search_users($input){
 		$term = xss_clean(substr($input,0,255));
-		$this->db->select('id,username,firstname,lastname,email,phone,tags');
+		$this->db->select('id,username,firstname,lastname,email,phone');
 		$this->db->like('firstname', $term);
 		$this->db->orlike('lastname', $term);
 		$this->db->orlike('email', $term);
 		$this->db->orlike('phone', $term);
-		$this->db->orlike('tags', $term);
 		$this->db->orlike('bio', $term);
 		$this->db->where('status','active');	
 		$Q = $this->db->get("users");
