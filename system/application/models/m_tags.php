@@ -106,7 +106,11 @@ class m_tags extends Model{
 	
 	function add_tags($tags,$object,$object_id){
 		$tags_array = explode(",",$tags);
-		$userid = $_SESSION['userid'];
+		if (!isset($_SESSION['userid'])){
+			$userid = $object_id;
+		}else{
+			$userid = $_SESSION['userid'];
+		}
 		$now = date("Y-m-d h:i:s");
 		
 		foreach ($tags_array as $tag){
