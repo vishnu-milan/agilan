@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-class Tags extends Controller {
+class Bookmarks extends Controller {
 
-	function Tags()
+	function Bookmarks()
 	{
 		parent::Controller();	
 		
@@ -13,30 +13,25 @@ class Tags extends Controller {
 		
 		
 	}
-
-
+	
 	function index(){
-		$data['title'] = 'List of Tags';
-		$data['main_view'] = 'agilan/tags_home';
+		$data['title'] = 'List of Bookmarks';
+		$data['main_view'] = 'agilan/bookmark_home';
 		$data['sidebar1'] = 'agilan/sidebar1';
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
-		$data['results'] = $this->m_tags->list_tags();
+		$data['results'] = $this->m_bookmarks->list_bookmarks();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
+	
 
-	
+
+
 	function update(){
-		$this->m_tags->follow_tag($this->input->post('tag'));
-		redirect('agilan/index', 'refresh');
-	}
-	
-	function objects($tag){
-		$data['results'] = $this->m_tags->list_objects($tag);
-		$data['tagname'] = $tag;
-		$data['title'] = 'Show Tag Results: '. $tag;
-		$data['main_view'] = 'agilan/tag_results';
+		$data['url'] = prep_url($this->input->post('url'));
+		$data['title'] = 'Add Bookmark';
+		$data['main_view'] = 'agilan/add_bookmark';
 		$data['sidebar1'] = 'agilan/sidebar1';
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
@@ -44,8 +39,16 @@ class Tags extends Controller {
 		$this->load->view('template');		
 	
 	}
+	
+	function insert(){
 
+		$try = $this->m_bookmarks->add_bookmark();
+		$tags = xss_clean(substr($_SESSION['b_tags'],0,255));
+		$this->m_tags->add_tags($tags,'bookmarks',$try);
+
+		redirect("agilan/index", 'refresh');
+	}	
 }
 
-/* End of file tags.php */
+/* End of file bookmarks.php */
 /* Location: ./system/application/controllers/agilan.php */

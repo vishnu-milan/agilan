@@ -72,20 +72,8 @@ class Agilan extends Controller {
 		$this->load->view('template');	
 	}
 
-	function show_objects($tag){
-		$data['results'] = $this->m_tags->list_objects($tag);
-		$data['tagname'] = $tag;
-		$data['title'] = 'Show Tag Results: '. $tag;
-		$data['main_view'] = 'agilan/tag_results';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
-		$data['user'] = $_SESSION['logged_in_user'];
-		$this->load->vars($data);
-		$this->load->view('template');		
-	
-	}
 
-	
+
 }
 
 /* End of file agilan.php */
