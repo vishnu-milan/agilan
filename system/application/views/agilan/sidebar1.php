@@ -4,25 +4,28 @@ echo br(2);
 ?>
 
 <?php 
-echo heading("My Tags", 4); 
+echo anchor("tags/index","my tags");
+echo br(2);
 
-echo form_open('tags/index');
+echo form_open('tags/update');
 $input = array('name' => 'tag', 'id' => 'tag', 'size'=> 20);
 echo form_input($input);
 echo br();
 echo form_submit('add tag','add tag');
 echo form_close();
 
+echo br(3);
 
-if (isset($_SESSION['my_follow_tags']) && count($_SESSION['my_follow_tags'])){
-	foreach ($_SESSION['my_follow_tags'] as $key => $tag){
-		echo anchor("agilan/show_objects/".$tag, $tag) . br();
-	}
-}
+echo anchor("bookmarks/index","my bookmarks");
+echo br(2);
+echo form_open('bookmarks/update');
+$input = array('name' => 'url', 'id' => 'url', 'size'=> 20);
+echo form_input($input);
+echo br();
+echo form_submit('add bookmark','add bookmark');
+echo form_close();
+
 ?>
 
-<?php echo heading("My Bookmarks", 4); ?>
-
-bookmarks go here
 
 <?php echo heading("Upload files",4); ?>

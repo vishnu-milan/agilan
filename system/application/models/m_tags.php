@@ -24,7 +24,8 @@ class m_tags extends Model{
 		parent::Model();
 	}
 	
-	function list_tags($userid){
+	function list_tags(){
+		$userid = $_SESSION['userid'];
 		$data = array();
 		$this->db->select("tag");
 		$this->db->where("user_id",$userid);
