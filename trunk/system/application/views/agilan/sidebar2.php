@@ -6,10 +6,10 @@ echo br();
 echo form_submit('search people','search people');
 echo form_close();
 echo br();
-
-echo anchor("users/index", "see all users");
-echo br();
-echo anchor("agilan/edit_profile",'edit profile');
-echo br(5);
-echo anchor("agilan/logout",'logout');
 ?>
+
+<ul id="rightnav">
+<li><?php echo anchor("users/index", "see all users");?></li>
+<li><?php echo anchor("agilan/edit_profile",'edit profile');?></li>
+<li><?php echo anchor("agilan/logout",'logout');?></li>
+</ul>

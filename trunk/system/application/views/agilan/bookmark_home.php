@@ -5,7 +5,6 @@ echo heading("My Bookmarks", 2);
 echo form_open('bookmarks/update');
 $input = array('name' => 'url', 'id' => 'url', 'size'=> 20);
 echo form_input($input);
-echo br();
 echo form_submit('add bookmark','add bookmark');
 echo form_close();
 echo br();
