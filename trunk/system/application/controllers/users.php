@@ -23,6 +23,7 @@ class Users extends Controller {
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['following'] = $this->m_follows->get_following($_SESSION['userid']);
 		$data['results'] = $this->m_users->list_users();
+		$data['user_tags'] = $this->m_tags->list_tag_users();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
@@ -34,6 +35,9 @@ class Users extends Controller {
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $this->m_users->get_user_by_username($username);
 		$data['updates'] = $this->m_updates->list_updates($data['user']['id'],10);
+		$following = $this->m_follows->get_following($_SESSION['userid']);
+		$following[] = $_SESSION['userid'];
+		$data['following'] = $following;
 		$this->load->vars($data);
 		$this->load->view('template');
 	}

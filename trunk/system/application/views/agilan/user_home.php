@@ -21,8 +21,23 @@ echo $user['username'];
 
 
 echo heading("Recent Updates", 2);
-if (count($updates)){
-	print_r($updates);
+if (in_array($user['id'],$following)){
+	echo anchor("users/unfollow/".$user['id'], "stop following");
+	echo br();			
+}else{
+	echo anchor("users/follow/".$user['id'], "follow status updates");
+	echo br();
 }
+			
+if (count($updates)){
+	foreach ($updates as $key => $list){
+		$U = $user['username'];
+		echo "<p><b>".$U . ":</b> " .
+					$list->update . "<br/>".
+					"<small>".$list->created;
+	
+		echo "</small></p>";
 
+	}
+}
 ?>

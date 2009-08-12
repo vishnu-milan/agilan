@@ -94,8 +94,39 @@ class m_tags extends Model{
 		return $data;				
 	}
 
+	function list_tag_users(){
+		$data = array();
+		$this->db->select("tag,object_id");
+		$this->db->where("object","users");
+		$Q = $this->db->get("tags");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->object_id][] = $row->tag;
+			}
+		}
+		
+		$Q->free_result();		
+		return $data;		
+	
+	}
 
-
+	function list_tag_one_user($userid){
+		$data = array();
+		$this->db->select("tag");
+		$this->db->where("object","users");
+		$this->db->where("object_id",$userid);
+		$Q = $this->db->get("tags");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[] = $row->tag;
+			}
+		}
+		
+		$Q->free_result();		
+		return $data;		
+	
+	}
+	
 	function list_tag_objects($object){
 		$userid = $_SESSION['userid'];
 		$data = array();
