@@ -7,6 +7,7 @@ echo heading("Tag Results: ". $tagname,2);
 //we know that there are users, bookmarks, files, and such that can be tagged
 //for now, I'll keep it like this and then go about adding tagging to another object
 
+echo "<pre>";
 print_r($results);
 exit();
 
