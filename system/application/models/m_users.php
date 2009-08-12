@@ -28,10 +28,11 @@ class m_users extends Model{
 		$this->db->order_by('lastname','asc');
 		$Q = $this->db->get("users");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
+			foreach ($Q->result() as $row){
 				$data[] = $row;
 			}
 		}
+		
 		$Q->free_result();		
 		return $data;	
 	}
@@ -101,7 +102,7 @@ class m_users extends Model{
 			$data = $Q->row_array();
 		}
 		unset($data['tags']);
-		$data['tags'] = $this->get_user_tags($id);
+		$data['tags'] = $this->get_user_tags($data['id']);
 
 		$Q->free_result();		
 		return $data;		

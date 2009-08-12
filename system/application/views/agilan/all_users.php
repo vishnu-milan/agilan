@@ -5,23 +5,27 @@ echo heading("All Users",2);
 
 if (count($results)){
 	foreach ($results as $id => $person){
-		echo anchor("users/home/".$person['username'], $person['firstname'] . " ". $person['lastname']);
+		echo anchor("users/home/".$person->username, $person->firstname . " ". $person->lastname);
 		echo br();
-		if ($person['id'] != $_SESSION['userid']){
-			if (in_array($person['id'],$following)){
-				echo anchor("users/unfollow/".$person['id'], "stop following");
+		if ($person->id != $_SESSION['userid']){
+			if (in_array($person->id,$following)){
+				echo anchor("users/unfollow/".$person->id, "stop following");
 				echo br();			
 			}else{
-				echo anchor("users/follow/".$person['id'], "follow status updates");
+				echo anchor("users/follow/".$person->id, "follow status updates");
 				echo br();
 			}
 		}
 		
-		echo "Email: ". $person['email'];
+		echo "Email: ". $person->email;
 		echo br();
-		echo "Phone: ". $person['phone'];
+		echo "Phone: ". $person->phone;
 		echo br();
-		echo "Expertise/Interests: " . $person['tags'];
+		echo "Expertise/Interests: " ;
+		
+		if (isset($user_tags[$person->id]) && count($user_tags[$person->id])){
+			echo implode(",", $user_tags[$person->id]);
+		}
 		echo br(2);
 	
 	}
