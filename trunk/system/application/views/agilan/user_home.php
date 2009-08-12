@@ -21,12 +21,14 @@ echo $user['username'];
 
 
 echo heading("Recent Updates", 2);
-if (in_array($user['id'],$following)){
-	echo anchor("users/unfollow/".$user['id'], "stop following");
-	echo br();			
-}else{
-	echo anchor("users/follow/".$user['id'], "follow status updates");
-	echo br();
+if ($user['id'] != $_SESSION['userid']){
+	if (in_array($user['id'],$following)){
+		echo anchor("users/unfollow/".$user['id'], "stop following");
+		echo br();			
+	}else{
+		echo anchor("users/follow/".$user['id'], "follow status updates");
+		echo br();
+	}
 }
 			
 if (count($updates)){
