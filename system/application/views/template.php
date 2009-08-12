@@ -193,6 +193,11 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 			background-color:#575352;
 		}
 		
+		
+		label{
+			display:block;
+			margin-top:10px;
+		}
 		/* And they lived happily ever after. The End. */
 </style>
 </head>
