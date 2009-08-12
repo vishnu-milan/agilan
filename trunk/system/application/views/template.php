@@ -204,7 +204,7 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 <body>
 <div id="container">
 	<div id="header">
-	  <h1>Agilan</h1>
+	  <h1>agilan</h1>
 
 	</div>
 	<div id="navigation"> 
