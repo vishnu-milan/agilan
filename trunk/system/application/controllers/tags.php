@@ -29,7 +29,7 @@ class Tags extends Controller {
 	
 	function update(){
 		$this->m_tags->follow_tag($this->input->post('tag'));
-		redirect('agilan/index', 'refresh');
+		redirect('tags/index', 'refresh');
 	}
 	
 	function objects($tag){
@@ -41,7 +41,7 @@ class Tags extends Controller {
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
-		$this->load->view('template');		
+		$this->load->view('template');
 	
 	}
 

@@ -21,6 +21,7 @@ class Bookmarks extends Controller {
 		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_bookmarks->list_bookmarks();
+		$data['bookmark_tags'] = $this->m_tags->list_tag_objects("bookmarks");
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
@@ -46,7 +47,7 @@ class Bookmarks extends Controller {
 		$tags = xss_clean(substr($_SESSION['b_tags'],0,255));
 		$this->m_tags->add_tags($tags,'bookmarks',$try);
 
-		redirect("agilan/index", 'refresh');
+		redirect("bookmarks/index", 'refresh');
 	}	
 }
 
