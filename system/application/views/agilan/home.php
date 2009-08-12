@@ -10,7 +10,7 @@ if (isset($_SESSION['message'])){
 }
 
 echo form_open('updates/index');
-$input = array('name' => 'status', 'id' => 'status', 'size'=> 40);
+$input = array('name' => 'status', 'id' => 'status', 'size'=> 30);
 echo form_input($input);
 echo form_submit('update','update');
 echo form_close();
