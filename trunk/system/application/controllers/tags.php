@@ -24,6 +24,15 @@ class Tags extends Controller {
 		$this->load->view('template');
 	}
 
+	function all(){
+		$data['title'] = 'Tag Directory';
+		$data['main_view'] = 'agilan/tags_all';
+		$data['results'] = $this->m_tags->list_all_tags();
+		$data['user'] = $_SESSION['logged_in_user'];
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+
 	
 	function update(){
 		$this->m_tags->follow_tag($this->input->post('tag'));
