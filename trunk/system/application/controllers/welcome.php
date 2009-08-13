@@ -6,6 +6,11 @@ class Welcome extends Controller {
 	function Welcome()
 	{
 		parent::Controller();	
+
+		$_SESSION['sidebar1'] = 'welcome/blank';
+		$_SESSION['sidebar2'] = 'welcome/blank';
+
+
 	}
 	
 	function index(){

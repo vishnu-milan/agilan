@@ -18,8 +18,6 @@ class Tags extends Controller {
 	function index(){
 		$data['title'] = 'List of Tags';
 		$data['main_view'] = 'agilan/tags_home';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_tags->list_tags();
 		$this->load->vars($data);
@@ -37,8 +35,6 @@ class Tags extends Controller {
 		$data['tagname'] = $tag;
 		$data['title'] = 'Show Tag Results: '. $tag;
 		$data['main_view'] = 'agilan/tag_results';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');

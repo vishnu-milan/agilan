@@ -40,7 +40,7 @@ class m_bookmarks extends Model{
 		$Q = $this->db->get("bookmarks");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
-				$data[] = $row;
+				$data[$row->id] = $row;
 			}
 		}
 		$Q->free_result();		
