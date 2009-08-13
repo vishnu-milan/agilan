@@ -1,6 +1,6 @@
 <?php
 
-echo heading("My Tags", 2);
+echo heading("Tag Directory", 2);
 
 echo form_open('tags/update');
 $input = array('name' => 'tag', 'id' => 'tag', 'size'=> 20);

@@ -28,11 +28,30 @@ class m_tags extends Model{
 		$userid = $_SESSION['userid'];
 		$data = array();
 		$this->db->select("tag");
+		$this->db->order_by('tag','asc');
 		$this->db->where("user_id",$userid);
 		$Q = $this->db->get("tag_follows");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
 				$data[] = $row->tag;
+			}
+		}
+		
+
+		$Q->free_result();		
+		return $data;			
+
+	}
+
+
+	function list_all_tags(){
+		$data = array();
+		$this->db->select("tag");
+		$this->db->order_by('tag','asc');
+		$Q = $this->db->get("tag_follows");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->tag] = $row->tag;
 			}
 		}
 		
