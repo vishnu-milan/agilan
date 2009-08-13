@@ -13,14 +13,13 @@ class Agilan extends Controller {
 		
 		$_SESSION['logged_in_user'] = $this->m_users->get_user($_SESSION['userid']);
 		$_SESSION['my_follow_tags'] = $this->m_tags->list_tags($_SESSION['userid']);
-		
+		$_SESSION['sidebar1'] = 'agilan/sidebar1';
+		$_SESSION['sidebar2'] = 'agilan/sidebar2';
 	}
 	
 	function index(){
 		$data['title'] = 'Welcome to your intranet!';
 		$data['main_view'] = 'agilan/home';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$following = $this->m_follows->get_following($_SESSION['userid']);
 		$following[] = $_SESSION['userid'];
@@ -36,8 +35,6 @@ class Agilan extends Controller {
 	function edit_profile(){
 		$data['title'] = 'Edit Your Profile';
 		$data['main_view'] = 'agilan/profile_edit';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');	
@@ -65,8 +62,6 @@ class Agilan extends Controller {
 		$data['results'] = $this->m_users->search_users($input);
 		$data['title'] = 'Search Results';
 		$data['main_view'] = 'agilan/search_results';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');	

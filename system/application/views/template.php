@@ -208,12 +208,12 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 
 	</div>
 	<div id="navigation"> 
-	<?php if (isset($sidebar1)){$this->load->view($sidebar1); }?>
+	<?php $this->load->view($_SESSION['sidebar1']);?>
 	</div>
 	
 	
 	<div id="sidebar">
-	<?php if (isset($sidebar2)){$this->load->view($sidebar2); }?>
+	<?php $this->load->view($_SESSION['sidebar2']);?>
 	</div>
 	  
 	<div id="content">

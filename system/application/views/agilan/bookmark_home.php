@@ -19,6 +19,34 @@ if (count($results)){
 			echo implode(",",$bookmark_tags[$list->id]);
 		}
 		echo "</small>";
+
+		if (isset($comments[$list->id]) && count($comments[$list->id]) > 0){
+			echo "<ol class='comments'>";
+			foreach ($comments[$list->id] as $kk => $ll){
+				$CID = $ll->user_id;
+				$CU = $usernames[$ll->user_id];
+				echo "<li><small><b>".$CU . ":</b> " .
+					$ll->comment . "<br/>".
+					$ll->created . "</small></li>";
+			}
+			echo "</ol>";
+		}else{
+			echo nbs();
+		}
+		
+		echo form_open('comments/index');
+		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 30);
+		echo form_input($input);
+		echo form_hidden('object','bookmarks');
+		echo form_hidden('object_id',$list->id);
+		echo form_hidden('return_url','bookmarks/index');
+		echo form_submit('add comment','add comment');
+		echo form_close();
+
+
+
+
+
 		echo br(2);
 
 

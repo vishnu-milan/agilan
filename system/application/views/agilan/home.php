@@ -49,7 +49,6 @@ if (count($updates)){
 		echo form_input($input);
 		echo form_hidden('object','updates');
 		echo form_hidden('object_id',$list->id);
-		echo br();
 		echo form_submit('add comment','add comment');
 		echo form_close();
 

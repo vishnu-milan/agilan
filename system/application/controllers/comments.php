@@ -20,6 +20,11 @@ class Comments extends Controller {
 		//for example, passing in an object named updates
 		//and object_id of 17 will link the comment to update #17
 	
+		$return = '';
+		if (isset($_POST['return_url'])){
+			$return = $this->input->post('return_url');
+		}
+	
 		$try = $this->m_comments->add_comment();
 		
 		if ($try == 0){
@@ -28,8 +33,12 @@ class Comments extends Controller {
 			$_SESSION['message'] = 'Comment posted!';
 
 		}
-		redirect('agilan/index','refresh');
-	
+		
+		if (strlen($return)){
+			redirect($return,'refresh');
+		}else{
+			redirect('agilan/index','refresh');
+		}
 	}
 
 	
