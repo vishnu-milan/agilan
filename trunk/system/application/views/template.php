@@ -13,7 +13,8 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 		#container {
 			width: 750px;
 			margin: 0 auto;
-			font-family: Lucida Grande, Tahoma, Arial, Helvetica, sans-serif; /* Lucida Grande for the Macs, Tahoma for the PCs */
+			font-family: Lucida Grande, Tahoma, Arial, Helvetica, sans-serif; 
+			/* Lucida Grande for the Macs, Tahoma for the PCs */
 			font-size: 11px;
 			line-height: 1.6em;
 			color: #666;
@@ -53,12 +54,13 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 			/* float:right;
 			margin-top: -45px;*/
 			font-size: 9px;
+			margin-bottom: 25px;
 		}
 		
 		input {
-			background-color: #FFF;
-			color: #999999;
-			border: 1px solid #CCC;
+			background-color: #f1f2f3;
+			color: #444;
+			border: 1px solid #999;
 			font-size: 11px;
 			padding: 3px;
 			margin-right:10px;
@@ -125,8 +127,8 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 		}
 		
 		#content p {
-			padding-bottom: 10px;
-			border-bottom: 1px solid #DDDDDD; /* A faint grey line below the text */
+			padding-bottom: 5px;
+			/* border-bottom: 1px solid #DDDDDD; NOPE! A faint grey line below the text */
 		}
 
 /* SIDEBAR ELEMENTS */
@@ -193,7 +195,8 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 			background-color:#575352;
 		}
 		
-		
+
+/* MISC STUFF */		
 		label{
 			display:block;
 			margin-top:10px;
@@ -204,7 +207,7 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 <body>
 <div id="container">
 	<div id="header">
-	  <h1>agilan</h1>
+	  <h1><?php echo anchor("welcome/index","agilan");?></h1>
 
 	</div>
 	<div id="navigation"> 
