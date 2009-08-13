@@ -14,8 +14,6 @@ if (count($results)){
 		echo "Email: ". $person['email'];
 		echo br();
 		echo "Phone: ". $person['phone'];
-		echo br();
-		echo "Expertise/Interests: " . $person['tags'];
 		echo br(2);
 	
 	}

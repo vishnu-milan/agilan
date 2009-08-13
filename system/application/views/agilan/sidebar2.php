@@ -1,11 +1,11 @@
 <?php
+echo heading("Search People",4);
 echo form_open('agilan/search');
 $input = array('name' => 'searchterm', 'id' => 'searchterm', 'size'=> 15);
 echo form_input($input);
-echo br();
-echo form_submit('search people','search people');
+echo form_submit('go','go');
 echo form_close();
-echo br();
+
 ?>
 
 <ul id="rightnav">

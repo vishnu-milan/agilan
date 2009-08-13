@@ -5,7 +5,7 @@ echo heading("My Bookmarks", 2);
 echo form_open('bookmarks/update');
 $input = array('name' => 'url', 'id' => 'url', 'size'=> 20);
 echo form_input($input);
-echo form_submit('add bookmark','add bookmark');
+echo form_submit('add bookmark','add');
 echo form_close();
 echo br();
 
@@ -20,8 +20,8 @@ if (count($results)){
 		}
 		echo "</small>";
 
+		echo "<ol class='comments'>";
 		if (isset($comments[$list->id]) && count($comments[$list->id]) > 0){
-			echo "<ol class='comments'>";
 			foreach ($comments[$list->id] as $kk => $ll){
 				$CID = $ll->user_id;
 				$CU = $usernames[$ll->user_id];
@@ -29,21 +29,21 @@ if (count($results)){
 					$ll->comment . "<br/>".
 					$ll->created . "</small></li>";
 			}
-			echo "</ol>";
+		
 		}else{
 			echo nbs();
 		}
 		
 		echo form_open('comments/index');
-		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 30);
+		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 15);
 		echo form_input($input);
 		echo form_hidden('object','bookmarks');
 		echo form_hidden('object_id',$list->id);
 		echo form_hidden('return_url','bookmarks/index');
-		echo form_submit('add comment','add comment');
+		echo form_submit('add comment','comment');
 		echo form_close();
 
-
+		echo "</ol>";
 
 
 
