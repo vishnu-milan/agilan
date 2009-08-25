@@ -75,7 +75,18 @@ class m_messages extends Model{
 	
 	}
 	
-	function send_message(){
+	function send_message($userid){
+		$now = date("Y-m-d h:i:s");
+		$data = array(
+			'from_id' => $userid,
+			'to_id' => $this->input->post('to_id'),
+			'subject' => xss_clean(substr($this->input->post('subject'),0,64)),
+			'message' => xss_clean(substr($this->input->post('subject'),0,255)),
+			'created' => $now,
+			'location' => 'sent'
+		);
+		
+		$this->db->insert("messages",$data);
 	
 	}
 	

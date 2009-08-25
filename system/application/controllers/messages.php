@@ -18,6 +18,7 @@ class Messages extends Controller {
 		$data['main_view'] = 'agilan/inbox';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['messages'] = $this->m_messages->list_messages_to($_SESSION['userid']);
+		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
@@ -27,6 +28,7 @@ class Messages extends Controller {
 		$data['main_view'] = 'agilan/sent';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['messages'] = $this->m_messages->list_messages_from($_SESSION['userid']);
+		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}	
@@ -36,12 +38,26 @@ class Messages extends Controller {
 		$data['main_view'] = 'agilan/archive';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['messages'] = $this->m_messages->list_messages_to($_SESSION['userid'],'archived');
+		$data['usernames'] = $this->m_users->list_user_names();
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+
+	function compose(){
+		$data['title'] = 'Compose Message';
+		$data['main_view'] = 'agilan/compose';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
 
 
-
+	function send_message(){
+		$this->m_messages->send_message($_SESSION['userid']);
+		redirect('messages/index','refresh');
+	
+	}
 }
 
 /* End of file agilan.php */
