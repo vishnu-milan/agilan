@@ -16,8 +16,9 @@ class m_messages extends Model{
 		parent::Model();
 	}
 	
-	function list_messages_to($userid){
+	function list_messages_to($userid,$location='inbox'){
 		$this->db->where('to_id',$userid);
+		$this->db->where('location',$location);
 		$Q = $this->db->get("messages");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result_array() as $row){
@@ -32,6 +33,7 @@ class m_messages extends Model{
 
 	function list_messages_from($userid){
 		$this->db->where('from_id',$userid);
+		$this->db->where('location','sent');
 		$Q = $this->db->get("messages");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result_array() as $row){
@@ -44,20 +46,7 @@ class m_messages extends Model{
 		return $data;		
 	}
 
-	function list_messages_archive($userid){
-		$this->db->where('from_id',$userid);
-		$this->db->where('location','archived');
-		$Q = $this->db->get("messages");
-		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
-				$data[] = $row;
-			}
-		}else{
-			$data = array();
-		}
-		$Q->free_result();		
-		return $data;		
-	}	
+
 	function get_message($id){
 		$this->db->where('id',$id);
 		$this->db->limit(1);
@@ -79,8 +68,8 @@ class m_messages extends Model{
 	
 	}
 	
-	function move_message($id,$target){
-		$data = array("location" => $target);
+	function move_message($id,$location){
+		$data = array("location" => $location);
 		$this->db->where('id',$id);
 		$this->db->update('messages',$data);
 	
