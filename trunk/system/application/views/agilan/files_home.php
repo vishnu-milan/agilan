@@ -12,7 +12,7 @@ if (count($results)){
 	foreach ($results as $key => $list){
 		echo $list->title . br();
 		echo $list->description . br();
-		echo  anchor("files/get/".$list->id, $list->location) . br();
+		echo  anchor("files/download/".$list->id, $list->location) . br();
 		echo "<small>" . $list->created. br();
 	
 		if (isset($file_tags[$list->id]) && count($file_tags[$list->id])){

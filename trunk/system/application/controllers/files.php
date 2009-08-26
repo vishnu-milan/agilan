@@ -27,7 +27,11 @@ class Files extends Controller {
 	}
 	
 
-
+	function download($id){
+		$name = $this->m_files->get_location($id);
+		$data = file_get_contents($name);
+		force_download($name,$data);
+	}
 
 	function upload(){
 		$try = $this->m_files->add_file();
