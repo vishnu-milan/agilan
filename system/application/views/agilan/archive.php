@@ -16,8 +16,14 @@ if (count($messages)){
 		echo "Sent: ". $msg->created;
 		echo br();
 		echo auto_typography($msg->message);
+		
+		if ($msg->from_id != $_SESSION['userid']){
+			echo br();
+			echo anchor("messages/respond/".$msg->id, "respond") . nbs(2) . "|" . nbs(2);
+			echo anchor("messages/inbox_message/".$msg->id, "move to inbox"); 
+		}
 		echo "<hr/>";
-	}
+		echo br();	}
 
 }else{
 	echo "No messages in archives!";

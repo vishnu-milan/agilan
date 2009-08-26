@@ -13,6 +13,10 @@ class Messages extends Controller {
 		
 	}
 	
+	function inbox(){
+		redirect('messages/index', 'refresh');
+	}
+
 	function index(){
 		$data['title'] = 'Your Inbox';
 		$data['main_view'] = 'agilan/inbox';
@@ -58,6 +62,19 @@ class Messages extends Controller {
 		redirect('messages/index','refresh');
 	
 	}
+	
+	function archive_message($id){
+		$this->m_messages->move_message($id);
+		redirect('messages/index','refresh');
+	
+	}	
+	
+	function inbox_message($id){
+		$this->m_messages->move_message($id,'inbox');
+		redirect('messages/index','refresh');
+	
+	}		
+	
 }
 
 /* End of file agilan.php */

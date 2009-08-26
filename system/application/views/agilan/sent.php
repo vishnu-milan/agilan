@@ -16,8 +16,11 @@ if (count($messages)){
 		echo "Sent: ". $msg->created;
 		echo br();
 		echo auto_typography($msg->message);
+		echo br();
+
+		echo anchor("messages/archive_message/".$msg->id, "archive this"); 
 		echo "<hr/>";
-	}
+		echo br();	}
 
 }else{
 	echo "No messages in sent folder!";
