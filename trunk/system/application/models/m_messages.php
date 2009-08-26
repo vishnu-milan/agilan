@@ -21,12 +21,14 @@ class m_messages extends Model{
 		$this->db->where('location',$location);
 		$Q = $this->db->get("messages");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
+			foreach ($Q->result() as $row){
 				$data[] = $row;
 			}
 		}else{
 			$data = array();
 		}
+		
+		//echo $this->db->last_query();
 		$Q->free_result();		
 		return $data;		
 	}
@@ -36,7 +38,7 @@ class m_messages extends Model{
 		$this->db->where('location','sent');
 		$Q = $this->db->get("messages");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
+			foreach ($Q->result() as $row){
 				$data[] = $row;
 			}
 		}else{
@@ -52,7 +54,7 @@ class m_messages extends Model{
 		$this->db->limit(1);
 		$Q = $this->db->get('messages');
 		if ($Q->num_rows() > 0){
-			$data = $Q->row_array();
+			$data = $Q->row();
 		}else{
 			$data = array();
 		}
@@ -80,8 +82,8 @@ class m_messages extends Model{
 		$data = array(
 			'from_id' => $userid,
 			'to_id' => $this->input->post('to_id'),
-			'subject' => xss_clean(substr($this->input->post('subject'),0,64)),
-			'message' => xss_clean(substr($this->input->post('subject'),0,255)),
+			'subject' => xss_clean(substr(strip_tags($this->input->post('subject')),0,64)),
+			'message' => xss_clean(substr(strip_tags($this->input->post('message'), '<b><i><a>'),0,255)),
 			'created' => $now,
 			'location' => 'sent'
 		);
