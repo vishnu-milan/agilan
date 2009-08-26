@@ -56,7 +56,18 @@ class Messages extends Controller {
 		$this->load->view('template');
 	}
 
-
+	function respond($id){
+		$data['title'] = 'Respond';
+		$data['respondid'] = $id;
+		$data['message'] = $this->m_messages->get_message($id);
+		$data['main_view'] = 'agilan/respond';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$data['usernames'] = $this->m_users->list_user_names();
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+	
+	
 	function send_message(){
 		$this->m_messages->send_message($_SESSION['userid']);
 		redirect('messages/index','refresh');
