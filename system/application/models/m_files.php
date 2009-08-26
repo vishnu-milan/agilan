@@ -101,7 +101,7 @@ class m_files extends Model{
 		}
 		
 		$Q->free_result();		
-		return $data;					
+		return $data->location;					
 	}
 	
 }//end class

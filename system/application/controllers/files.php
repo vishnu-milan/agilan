@@ -29,7 +29,7 @@ class Files extends Controller {
 
 	function download($id){
 		$name = $this->m_files->get_location($id);
-		$data = file_get_contents($name);
+		$data = file_get_contents("./uploads/".$name);
 		force_download($name,$data);
 	}
 
