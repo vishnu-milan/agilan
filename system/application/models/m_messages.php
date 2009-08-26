@@ -20,6 +20,7 @@ class m_messages extends Model{
 	function list_messages_to($userid,$location='inbox'){
 		$this->db->where('to_id',$userid);
 		$this->db->where('location',$location);
+		$this->db->order_by('created','desc');
 		$Q = $this->db->get("messages");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
@@ -37,6 +38,7 @@ class m_messages extends Model{
 	function list_messages_from($userid){
 		$this->db->where('from_id',$userid);
 		$this->db->where('location','sent');
+		$this->db->order_by('created','desc');
 		$Q = $this->db->get("messages");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
