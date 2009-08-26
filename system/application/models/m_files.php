@@ -89,6 +89,21 @@ class m_files extends Model{
 		return $this->db->insert_id();	
 	}
 	
+	
+	function get_location($id){
+		$data = array();
+		$this->db->select('location');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('files');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}
+		
+		$Q->free_result();		
+		return $data;					
+	}
+	
 }//end class
 
 ?>
