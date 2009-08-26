@@ -21,7 +21,7 @@ class m_files extends Model{
 		$this->db->where('user_id',$userid);
 		$Q = $this->db->get("files");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
+			foreach ($Q->result() as $row){
 				$data[] = $row;
 			}
 		}else{
@@ -36,7 +36,7 @@ class m_files extends Model{
 		$this->db->limit(1);
 		$Q = $this->db->get('files');
 		if ($Q->num_rows() > 0){
-			$data = $Q->row_array();
+			$data = $Q->row();
 		}else{
 			$data = array();
 		}
@@ -53,11 +53,40 @@ class m_files extends Model{
 	}
 	
 	function add_file(){
+		if (count($_FILES['userfile'])){
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'gif|jpg|png|pdf|doc|xls|zip|txt|html|rtf';
+			$config['max_size']	= '3500';
+			$config['max_width']  = '800';
+			$config['max_height']  = '800';
+			$this->load->library('upload', $config);
 	
+			/*if(!$this->upload->do_upload()){
+				echo $this->upload->display_errors();
+				exit();
+			}*/
+			$this->upload->do_upload();
+			$U = $this->upload->data();
+			return $U['file_name'];
+		}else{
+			return 0;
+		}
 	}
 	
-	function update_file($id){
-	
+	function insert_file(){
+		$userid = $_SESSION['userid'];
+		$now = date("Y-m-d h:i:s");
+		$data = array(
+			'title' => xss_clean(substr($this->input->post('title'),0,255)),
+			'description' => xss_clean(substr($this->input->post('description'),0,255)),
+			'location' => $this->input->post('location'),
+			'user_id' => $userid,
+			'created' => $now
+		);
+		
+		$this->db->insert("files",$data);
+		$_SESSION['f_tags'] = $this->input->post('tags');
+		return $this->db->insert_id();	
 	}
 	
 }//end class
