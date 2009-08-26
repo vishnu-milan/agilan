@@ -70,7 +70,7 @@ class m_messages extends Model{
 	
 	}
 	
-	function move_message($id,$location){
+	function move_message($id,$location='archived'){
 		$data = array("location" => $location);
 		$this->db->where('id',$id);
 		$this->db->update('messages',$data);
