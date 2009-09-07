@@ -5,7 +5,12 @@ needs: form validation, upload of photo
 
 
 echo heading("Please register!", 2);
-echo form_open('welcome/create');
+echo form_open_multipart('welcome/create');
+
+
+echo form_label("Your profile image", 'photo');
+echo form_hidden("MAX_FILE_SIZE",'80000');
+echo "<input type='file' name='photo' id='photo' size='20' />";
 
 echo form_label('Your first name', 'firstname');
 $input = array('name' => 'firstname', 'id' => 'firstname', 'size'=> 40);

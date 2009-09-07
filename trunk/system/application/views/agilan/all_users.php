@@ -7,6 +7,8 @@ if (count($results)){
 	foreach ($results as $id => $person){
 		echo anchor("users/home/".$person->username, $person->firstname . " ". $person->lastname);
 		echo br();
+		echo img("users/get_photo/".$person->id,true);
+		echo br();
 		if ($person->id != $_SESSION['userid']){
 			if (in_array($person->id,$following)){
 				echo anchor("users/unfollow/".$person->id, "stop following");

@@ -3,6 +3,7 @@
 echo heading("My Files", 2);
 
 echo form_open_multipart('files/upload');
+echo form_hidden("MAX_FILE_SIZE",'12000000');
 echo "<input type='file' name='userfile' id='userfile' size='20' />";
 echo form_submit('upload','upload');
 echo form_close();
