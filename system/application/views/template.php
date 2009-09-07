@@ -58,9 +58,9 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 		}
 		
 		input {
-			background-color: #f1f2f3;
+			background-color: #ccc;
 			color: #444;
-			border: 1px solid #999;
+			border: 2px solid #444;
 			font-size: 11px;
 			padding: 3px;
 			margin-right:10px;
@@ -200,6 +200,14 @@ CSS Document For Leaves v1.0 - Anthonyy @ OSWD.org
 		label{
 			display:block;
 			margin-top:10px;
+		}
+		
+		ol.comments li{
+			background-color: #f1f1f2;
+			padding: 2px;
+			width: 17em;
+			border:1px solid #444;
+			margin-bottom:3px;
 		}
 		/* And they lived happily ever after. The End. */
 </style>
