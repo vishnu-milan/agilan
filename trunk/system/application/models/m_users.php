@@ -238,7 +238,7 @@ class m_users extends Model{
 
 
 	//SEARCH USERS
-	function search_users($input){
+	function search_users($input,$users_from_tags){
 		$data = array();
 		$term = xss_clean(substr($input,0,255));
 		$this->db->select('id,username,firstname,lastname,email,phone');
@@ -251,9 +251,20 @@ class m_users extends Model{
 		$Q = $this->db->get("users");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result_array() as $row){
-				$data[] = $row;
+				$ID = $row['id'];
+				$data[$ID] = $row;
 			}
 		}
+		
+		if (count($users_from_tags)){
+			foreach ($users_from_tags as $mid => $truth){
+				if (!isset($data[$mid])){
+					$data[$mid] = $this->get_user($mid);
+				}
+			}
+		}
+		
+		
 		$Q->free_result();		
 		return $data;	
 	}

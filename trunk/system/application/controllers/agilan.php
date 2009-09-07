@@ -59,7 +59,8 @@ class Agilan extends Controller {
 	
 	function search(){
 		$input = $this->input->post('searchterm');
-		$data['results'] = $this->m_users->search_users($input);
+		$users_from_tags = $this->m_tags->search_tags($input);
+		$data['results'] = $this->m_users->search_users($input,$users_from_tags);
 		$data['title'] = 'Search Results';
 		$data['main_view'] = 'agilan/search_results';
 		$data['user'] = $_SESSION['logged_in_user'];

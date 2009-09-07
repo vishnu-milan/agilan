@@ -23,6 +23,24 @@ class m_tags extends Model{
 	function m_tags(){
 		parent::Model();
 	}
+
+
+	function search_tags($input){
+		$data = array();
+		$term = xss_clean(substr($input,0,255));
+		$this->db->select('user_id');
+		$this->db->like('tag', $term);
+		$this->db->like('object', 'users');
+		$Q = $this->db->get("tags");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->user_id] = true;
+			}
+		}
+		$Q->free_result();
+		return $data;	
+	}
+
 	
 	function list_tags(){
 		$userid = $_SESSION['userid'];
