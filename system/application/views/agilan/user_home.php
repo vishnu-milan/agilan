@@ -8,6 +8,7 @@ $properties = array(
 );
 echo img($properties,true);
 echo br();
+$properties = array();
 
 echo heading('Short Biography', 4);
 echo $user['bio'];

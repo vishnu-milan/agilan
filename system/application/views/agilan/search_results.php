@@ -9,11 +9,12 @@ if (count($results)){
 		echo br();
 		
 		$properties = array(
-					'src' => 'users/get_photo/'. $user['id'],
+					'src' => 'users/get_photo/'. $person['id'],
 					'width' => '120',
 					'height' => '90'
 		);
-		echo img($properties,true);		
+		echo img($properties,true);	
+		$properties = array();
 		echo br();
 		if ($person['id'] != $_SESSION['userid']){
 			echo anchor("users/follow/".$person['id'], "follow status updates");

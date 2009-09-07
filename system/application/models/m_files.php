@@ -66,6 +66,9 @@ class m_files extends Model{
 			fclose($fp);
 			
 			$data['content'] = base64_encode($content);
+			$data['file_type'] = $ftype;
+			$data['file_size'] = $fsize;
+
 		}
 
 
@@ -140,7 +143,7 @@ class m_files extends Model{
 		}
 		
 		$Q->free_result();		
-		return base64_decode($data->content);					
+		echo base64_decode($data->content);					
 	}
 	
 }//end class
