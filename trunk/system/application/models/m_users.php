@@ -250,8 +250,8 @@ class m_users extends Model{
 		$this->db->where('status','active');	
 		$Q = $this->db->get("users");
 		if ($Q->num_rows() > 0){
-			foreach ($Q->result_array() as $row){
-				$ID = $row['id'];
+			foreach ($Q->result() as $row){
+				$ID = $row->id;
 				$data[$ID] = $row;
 			}
 		}

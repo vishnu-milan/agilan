@@ -200,6 +200,15 @@ class m_tags extends Model{
 		}
 		$now = date("Y-m-d h:i:s");
 		
+		
+		//first, remove all tags associated with object and object_id
+		$this->db->where('object', $object);
+		$this->db->where('object_id',$object_id);
+		$this->db->where('user_id',$userid);
+		$this->db->delete('tags');
+		
+		
+		//now add the new stuff
 		foreach ($tags_array as $tag){
 			
 			$data = array(
