@@ -110,6 +110,8 @@ class m_files extends Model{
 		$this->db->where('id',$fid);
 		$this->db->update("files",$data);
 		$_SESSION['f_tags'] = $this->input->post('tags');
+		
+		return $fid;
 	}
 	
 	
@@ -138,7 +140,7 @@ class m_files extends Model{
 		}
 		
 		$Q->free_result();		
-		return base64_decode($data->title);					
+		return base64_decode($data->content);					
 	}
 	
 }//end class
