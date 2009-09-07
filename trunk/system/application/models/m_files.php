@@ -8,7 +8,8 @@ CREATE TABLE `files` (
 `location` VARCHAR( 255 ) NOT NULL ,
 `file_type` VARCHAR( 128 ) NOT NULL ,
 `file_size` VARCHAR( 16 ) NOT NULL ,
-`created` TIMESTAMP NOT NULL
+`created` TIMESTAMP NOT NULL,
+`content` MEDIUMBLOB NOT NULL
 ) ENGINE = MYISAM ;
 */
 class m_files extends Model{
@@ -53,6 +54,26 @@ class m_files extends Model{
 	}
 	
 	function add_file(){
+
+		if ($_FILES['userfile']['size'] > 0){
+			$fname = $_FILES['userfile']['name'];
+			$fsize = $_FILES['userfile']['size'];
+			$ftype = $_FILES['userfile']['type'];
+			$ftemp = $_FILES['userfile']['tmp_name'];
+			
+			$fp = fopen($ftemp,'r');
+			$content = fread($fp, filesize($ftemp));
+			fclose($fp);
+			
+			$data['content'] = base64_encode($content);
+		}
+
+
+		$this->db->insert('files',$data);
+		return $this->db->insert_id();
+
+		/* deprecated!
+		
 		if (count($_FILES['userfile'])){
 			$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'gif|jpg|png|pdf|doc|xls|zip|txt|html|rtf';
@@ -61,19 +82,21 @@ class m_files extends Model{
 			$config['max_height']  = '800';
 			$this->load->library('upload', $config);
 	
-			/*if(!$this->upload->do_upload()){
+			if(!$this->upload->do_upload()){
 				echo $this->upload->display_errors();
 				exit();
-			}*/
+			}
 			$this->upload->do_upload();
 			$U = $this->upload->data();
 			return $U['file_name'];
 		}else{
 			return 0;
 		}
+		*/
 	}
 	
-	function insert_file(){
+	function add_details(){
+		$fid = $this->input->post('id');
 		$userid = $_SESSION['userid'];
 		$now = date("Y-m-d h:i:s");
 		$data = array(
@@ -84,15 +107,15 @@ class m_files extends Model{
 			'created' => $now
 		);
 		
-		$this->db->insert("files",$data);
+		$this->db->where('id',$fid);
+		$this->db->update("files",$data);
 		$_SESSION['f_tags'] = $this->input->post('tags');
-		return $this->db->insert_id();	
 	}
 	
 	
-	function get_location($id){
+	function get_name($id){
 		$data = array();
-		$this->db->select('location');
+		$this->db->select('title');
 		$this->db->where('id',$id);
 		$this->db->limit(1);
 		$Q = $this->db->get('files');
@@ -101,7 +124,21 @@ class m_files extends Model{
 		}
 		
 		$Q->free_result();		
-		return $data->location;					
+		return $data->title;					
+	}
+
+	function get_data($id){
+		$data = array();
+		$this->db->select('content');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('files');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}
+		
+		$Q->free_result();		
+		return base64_decode($data->title);					
 	}
 	
 }//end class
