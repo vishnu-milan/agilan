@@ -53,6 +53,10 @@ class Users extends Controller {
 		$this->m_follows->unfollow($myid,$id);
 		redirect("agilan/index", 'refresh');
 	}	
+	
+	function get_photo($id){
+		$this->m_users->get_profile_photo($id);
+	}
 
 }
 

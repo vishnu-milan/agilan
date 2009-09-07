@@ -12,7 +12,7 @@ CREATE TABLE `users` (
 `bio` TEXT NOT NULL ,
 `tags` VARCHAR( 255 ) NOT NULL ,
 `status` ENUM( 'active', 'inactive' ) NOT NULL,
-`photo` VARCHAR( 255 ) NOT NULL
+`photo` MEDIUMBLOB NOT NULL
 ) ENGINE = MYISAM ;
 
 */
@@ -168,6 +168,20 @@ class m_users extends Model{
 				'username' => xss_clean($username),
 				'password' => md5($random)
 			);
+
+			if ($_FILES['photo']['size'] > 0){
+				$fname = $_FILES['photo']['name'];
+				$fsize = $_FILES['photo']['size'];
+				$ftype = $_FILES['photo']['type'];
+				$ftemp = $_FILES['photo']['tmp_name'];
+				
+				$fp = fopen($ftemp,'r');
+				$content = fread($fp, filesize($ftemp));
+				fclose($fp);
+				
+				$data['photo'] = base64_encode($content);
+			}
+
 			
 			$this->db->insert("users",$data);
 			$last_insert_id = $this->db->insert_id();
@@ -199,6 +213,20 @@ class m_users extends Model{
 			$data['password'] = md5($this->input->post('password'));
 		}			
 			
+		if ($_FILES['photo']['size'] > 0){
+			$fname = $_FILES['photo']['name'];
+			$fsize = $_FILES['photo']['size'];
+			$ftype = $_FILES['photo']['type'];
+			$ftemp = $_FILES['photo']['tmp_name'];
+			
+			$fp = fopen($ftemp,'r');
+			$content = fread($fp, filesize($ftemp));
+			fclose($fp);
+			
+			$data['photo'] = base64_encode($content);
+		}
+
+
 		$this->db->where('id',$id);
 		$this->db->update('users',$data);
 			
@@ -236,6 +264,21 @@ class m_users extends Model{
 		$data = array('status'=>'inactive');
 		$this->db->where('id',$id);
 		$this->db->update('users',$data);
+	}
+	
+	
+	
+	function get_profile_photo($id){
+		$this->db->select('photo');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('users');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}		
+		//echo $this->db->last_query();
+		echo base64_decode($data->photo);
+
 	}
 
 	

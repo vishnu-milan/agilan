@@ -5,7 +5,14 @@ needs: form validation, upload of photo
 
 
 echo heading("Update your profile!", 2);
-echo form_open('agilan/update_profile');
+echo form_open_multipart('agilan/update_profile');
+
+echo form_label("Change your profile image", 'photo');
+echo form_hidden("MAX_FILE_SIZE",'80000');
+echo "<input type='file' name='photo' id='photo' size='20' />";
+
+echo form_label('Your username', 'username');
+echo "<b>".$user['username'] ."</b>";
 
 echo form_label('Your first name', 'firstname');
 $input = array('name' => 'firstname', 'id' => 'firstname', 'size'=> 40, 'value' => $user['firstname']);
@@ -23,9 +30,6 @@ echo form_label('Your phone number', 'phone');
 $input = array('name' => 'phone', 'id' => 'phone', 'size'=> 20, 'value' => $user['phone']);
 echo form_input($input);
 
-
-echo form_label('Choose a username', 'username');
-echo $user['username'];
 
 echo form_label('Choose a new password', 'password');
 $input = array('name' => 'password', 'id' => 'password', 'size'=> 20);

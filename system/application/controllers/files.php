@@ -58,6 +58,8 @@ class Files extends Controller {
 		$this->m_tags->add_tags($tags,'files',$try);
 		redirect("files/index", 'refresh');
 	}	
+	
+	
 }
 
 /* End of file bookmarks.php */
