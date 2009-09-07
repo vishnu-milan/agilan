@@ -46,6 +46,21 @@ class m_files extends Model{
 		return $data;			
 	}
 	
+	function get_file_short($id){
+		$this->db->select('id,title,description,created');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('files');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}else{
+			$data = array();
+		}
+		
+		$Q->free_result();		
+		return $data;			
+	}
+	
 	function delete_file($id){
 		//we need to add a bit in here where the file is removed from the location!
 		$this->db->limit(1);

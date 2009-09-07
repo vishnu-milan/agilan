@@ -40,7 +40,28 @@ class Tags extends Controller {
 	}
 	
 	function objects($tag){
-		$data['results'] = $this->m_tags->list_objects($tag);
+		$temp = $this->m_tags->list_objects($tag);
+		
+		if (count($temp)){
+			foreach ($temp as $id => $obj){
+				$obj_id = $obj->object_id;
+				switch($obj->object){
+					case "bookmarks":
+						$results[$obj->object][$obj_id] = $this->m_bookmarks->get_bookmark($obj_id);
+					break;
+					
+					case "files":
+						$results[$obj->object][$obj_id] = $this->m_files->get_file_short($obj_id);
+					break;
+					
+					case "users":
+						$results[$obj->object][$obj_id] = $this->m_users->get_user_short($obj_id);
+					break;
+				}
+			}		
+		}		
+		
+		$data['results'] = $results;
 		$data['tagname'] = $tag;
 		$data['title'] = 'Show Tag Results: '. $tag;
 		$data['main_view'] = 'agilan/tag_results';

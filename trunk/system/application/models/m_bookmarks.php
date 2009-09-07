@@ -30,7 +30,21 @@ class m_bookmarks extends Model{
 		return $this->db->insert_id();
 	
 	}
-	
+
+
+	function get_bookmark($id){
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('bookmarks');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}else{
+			$data = array();
+		}
+		
+		$Q->free_result();		
+		return $data;			
+	}	
 	
 	function list_bookmarks(){
 		$userid = $_SESSION['userid'];
