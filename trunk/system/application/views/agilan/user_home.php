@@ -1,7 +1,13 @@
 <?php
 
 echo heading("Profile for ". $user['firstname'] . " " . $user['lastname'], 2);
-echo img("users/get_photo/".$user['id'],true);
+$properties = array(
+			'src' => 'users/get_photo/'. $user['id'],
+			'width' => '120',
+			'height' => '90'
+);
+echo img($properties,true);
+echo br();
 
 echo heading('Short Biography', 4);
 echo $user['bio'];

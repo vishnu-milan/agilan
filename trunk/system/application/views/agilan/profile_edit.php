@@ -7,6 +7,14 @@ needs: form validation, upload of photo
 echo heading("Update your profile!", 2);
 echo form_open_multipart('agilan/update_profile');
 
+
+$properties = array(
+			'src' => 'users/get_photo/'. $user['id'],
+			'width' => '120',
+			'height' => '90'
+);
+echo img($properties,true);
+echo br();
 echo form_label("Change your profile image", 'photo');
 echo form_hidden("MAX_FILE_SIZE",'80000');
 echo "<input type='file' name='photo' id='photo' size='20' />";

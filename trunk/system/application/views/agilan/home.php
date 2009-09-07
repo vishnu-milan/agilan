@@ -21,7 +21,20 @@ if (count($updates)){
 	foreach ($updates as $key => $list){
 		$ID = $list->user_id;
 		$U = $usernames[$ID];
-		echo "<p><b>".$U . ":</b> " .
+		echo "<p>";
+		$properties = array(
+			'src' => 'users/get_photo/'. $ID,
+			'width' => '45',
+			'height' => '30',
+			'align' => 'left',
+			'hspace' => '5'
+		);
+		echo img($properties,true);
+
+		$properties = array();
+		
+		
+		echo "<b>".$U . ":</b> " .
 					$list->update . "<br/>".
 					"<small>".$list->created;
 	
