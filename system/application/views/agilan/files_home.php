@@ -9,12 +9,17 @@ echo form_submit('upload','upload');
 echo form_close();
 echo br();
 
+
+//time format!
+$format = "%m/%d/%Y %h:%i %a";
+
 if (count($results)){
 	foreach ($results as $key => $list){
 		echo $list->title . br();
 		echo $list->description . br();
+		$stamp = mysql_to_unix($list->created);
 		echo  anchor("files/download/".$list->id, $list->title) . br();
-		echo "<small>" . $list->created. br();
+		echo "<small>" . mdate($format,$stamp). br();
 	
 		if (isset($file_tags[$list->id]) && count($file_tags[$list->id])){
 			echo implode(",",$file_tags[$list->id]);
@@ -26,9 +31,10 @@ if (count($results)){
 			foreach ($comments[$list->id] as $kk => $ll){
 				$CID = $ll->user_id;
 				$CU = $usernames[$ll->user_id];
+				$stamp = mysql_to_unix($ll->created);
 				echo "<li><small><b>".$CU . ":</b> " .
 					$ll->comment . "<br/>".
-					$ll->created . "</small></li>";
+					mdate($format,$stamp) . "</small></li>";
 			}
 		
 		}else{

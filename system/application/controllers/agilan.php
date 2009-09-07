@@ -18,7 +18,7 @@ class Agilan extends Controller {
 	}
 	
 	function index(){
-		$data['title'] = 'Welcome to your intranet!';
+		$data['title'] = 'Welcome to agilan!';
 		$data['main_view'] = 'agilan/home';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$following = $this->m_follows->get_following($_SESSION['userid']);
