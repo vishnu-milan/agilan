@@ -28,8 +28,8 @@ class Files extends Controller {
 	
 
 	function download($id){
-		$name = $this->m_files->get_location($id);
-		$data = file_get_contents("./uploads/".$name);
+		$name = $this->m_files->get_name($id);
+		$data = $this->m_files->get_data($id);
 		force_download($name,$data);
 	}
 
@@ -41,7 +41,7 @@ class Files extends Controller {
 			echo "No file uploaded!";
 			exit();
 		}else{
-			$data['location'] = $try;
+			$data['file_id'] = $try;
 		}
 
 		$data['title'] = 'Add File Details';
@@ -52,8 +52,8 @@ class Files extends Controller {
 
 	}
 	
-	function insert(){
-		$try = $this->m_files->insert_file();
+	function add_details(){
+		$try = $this->m_files->add_details();
 		$tags = xss_clean(substr($_SESSION['f_tags'],0,255));
 		$this->m_tags->add_tags($tags,'files',$try);
 		redirect("files/index", 'refresh');

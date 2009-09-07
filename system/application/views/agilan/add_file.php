@@ -5,12 +5,10 @@ needs: form validation, upload of photo
 
 
 echo heading("Add File Details", 2);
-echo form_open('files/insert');
+echo form_open('files/add_details');
 
 
-echo form_label('Location', 'location');
-echo "<b>". $location."</b>";
-echo form_hidden('location',$location);
+echo form_hidden('id',$file_id);
 
 echo form_label('Title', 'title');
 $input = array('name' => 'title', 'id' => 'title', 'size'=> 40);
