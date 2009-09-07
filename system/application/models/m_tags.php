@@ -119,6 +119,7 @@ class m_tags extends Model{
 
 	function list_objects($tag){
 		$data = array();
+		
 		$this->db->like("tag",$tag);
 		$Q = $this->db->get("tags");
 		if ($Q->num_rows() > 0){
@@ -127,7 +128,9 @@ class m_tags extends Model{
 			}
 		}
 		
-		$Q->free_result();		
+		$Q->free_result();	
+		
+
 		return $data;				
 	}
 

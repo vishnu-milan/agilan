@@ -71,6 +71,19 @@ class m_users extends Model{
 		return $data;		
 	}
 
+	function get_user_short($id){
+		$data = array();
+		$this->db->select('id,username,firstname,lastname,email,phone');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('users');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}
+				
+		$Q->free_result();		
+		return $data;		
+	}
 
 
 	//GET USER TAGS
@@ -259,7 +272,7 @@ class m_users extends Model{
 		if (count($users_from_tags)){
 			foreach ($users_from_tags as $mid => $truth){
 				if (!isset($data[$mid])){
-					$data[$mid] = $this->get_user($mid);
+					$data[$mid] = $this->get_user_short($mid);
 				}
 			}
 		}
