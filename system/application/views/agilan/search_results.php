@@ -7,7 +7,13 @@ if (count($results)){
 	foreach ($results as $id => $person){
 		echo anchor("users/home/".$person['username'], $person['firstname'] . " ". $person['lastname']);
 		echo br();
-		echo img("users/get_photo/".$person->id,true);
+		
+		$properties = array(
+					'src' => 'users/get_photo/'. $user['id'],
+					'width' => '120',
+					'height' => '90'
+		);
+		echo img($properties,true);		
 		echo br();
 		if ($person['id'] != $_SESSION['userid']){
 			echo anchor("users/follow/".$person['id'], "follow status updates");

@@ -7,7 +7,15 @@ if (count($results)){
 	foreach ($results as $id => $person){
 		echo anchor("users/home/".$person->username, $person->firstname . " ". $person->lastname);
 		echo br();
-		echo img("users/get_photo/".$person->id,true);
+
+		$properties = array(
+					'src' => 'users/get_photo/'. $person->id,
+					'width' => '120',
+					'height' => '90'
+		);
+		echo img($properties,true);
+
+		$properties = array();
 		echo br();
 		if ($person->id != $_SESSION['userid']){
 			if (in_array($person->id,$following)){
