@@ -14,6 +14,10 @@ $input = array('name' => 'status', 'id' => 'status', 'size'=> 30);
 echo form_input($input);
 echo form_submit('update','update');
 echo form_close();
+		
+		
+//time format!
+$format = "%m/%d/%Y %h:%i %a";
 
 
 
@@ -32,11 +36,11 @@ if (count($updates)){
 		echo img($properties,true);
 
 		$properties = array();
-		
+		$stamp = mysql_to_unix($list->created);
 		
 		echo "<b>".$U . ":</b> " .
 					$list->update . "<br/>".
-					"<small>".$list->created;
+					"<small>".mdate($format,$stamp);
 	
 		if ($ID != $_SESSION['userid']){
 			echo nbs() . anchor('users/unfollow/'. $ID, 'unfollow');
@@ -48,9 +52,12 @@ if (count($updates)){
 			foreach ($comments[$list->id] as $kk => $ll){
 				$CID = $ll->user_id;
 				$CU = $usernames[$ll->user_id];
-				echo "<li><small><b>".$CU . ":</b> " .
+				
+				$stamp = mysql_to_unix($ll->created);
+				
+				echo "<li><b>".$CU . ":</b> <small>" .
 					$ll->comment . "<br/>".
-					$ll->created . "</small></li>";
+					mdate($format,$stamp) . "</small></li>";
 			}
 		}else{
 			echo nbs();

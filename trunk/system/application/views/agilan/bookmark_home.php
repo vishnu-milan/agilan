@@ -9,11 +9,17 @@ echo form_submit('add bookmark','add');
 echo form_close();
 echo br();
 
+//time format!
+$format = "%m/%d/%Y %h:%i %a";
+
+
 if (count($results)){
 	foreach ($results as $key => $list){
 		echo auto_link($list->url) . br();
 		echo $list->description . br();
-		echo "<small>" . $list->created. br();
+		$stamp = mysql_to_unix($list->created);
+		
+		echo "<small>" . mdate($format,$stamp). br();
 	
 		if (isset($bookmark_tags[$list->id]) && count($bookmark_tags[$list->id])){
 			echo implode(",",$bookmark_tags[$list->id]);
@@ -25,9 +31,11 @@ if (count($results)){
 			foreach ($comments[$list->id] as $kk => $ll){
 				$CID = $ll->user_id;
 				$CU = $usernames[$ll->user_id];
+				$stamp = mysql_to_unix($ll->created);
+				
 				echo "<li><small><b>".$CU . ":</b> " .
 					$ll->comment . "<br/>".
-					$ll->created . "</small></li>";
+					mdate($format,$stamp) . "</small></li>";
 			}
 		
 		}else{
