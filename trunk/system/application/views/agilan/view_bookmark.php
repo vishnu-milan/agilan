@@ -9,7 +9,8 @@ echo auto_link($results->url) . br();
 echo $results->description . br();
 $stamp = mysql_to_unix($results->created);
 
-echo "<small>" . mdate($format,$stamp). br();
+echo "<small>posted " . mdate($format,$stamp);
+echo " by ". $usernames[$results->user_id]. br();
 
 if (isset($bookmark_tags[$results->id]) && count($bookmark_tags[$results->id])){
 	echo implode(",",$bookmark_tags[$results->id]);

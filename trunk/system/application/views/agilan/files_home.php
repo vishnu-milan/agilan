@@ -19,7 +19,8 @@ if (count($results)){
 		$stamp = mysql_to_unix($list->created);
 		echo  anchor("files/view_file/".$list->id, 'see details') .' | ';
 		echo  anchor("files/download/".$list->id, 'download') . br();
-		echo "<small>uploaded " . mdate($format,$stamp). br();
+		echo "<small>uploaded " . mdate($format,$stamp);
+		echo " by ". $usernames[$list->user_id]. br();		
 		echo "</small>";
 
 		echo br(2);

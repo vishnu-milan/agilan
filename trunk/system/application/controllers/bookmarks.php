@@ -45,6 +45,7 @@ class Bookmarks extends Controller {
 		$data['main_view'] = 'agilan/bookmarks_all';
 		$data['results'] = $this->m_bookmarks->list_all_bookmarks();
 		$data['user'] = $_SESSION['logged_in_user'];
+		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
