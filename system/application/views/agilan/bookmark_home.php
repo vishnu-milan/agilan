@@ -19,7 +19,8 @@ if (count($results)){
 		$stamp = mysql_to_unix($list->created);
 		echo  anchor("bookmarks/view_bookmark/".$list->id, 'see details') . br();
 
-		echo "<small>" . mdate($format,$stamp). br();
+		echo "<small>posted " . mdate($format,$stamp);
+		echo " by ". $usernames[$list->user_id]. br();
 		echo "</small>";
 
 

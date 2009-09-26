@@ -35,7 +35,7 @@ class m_files extends Model{
 
 	function list_files_short(){
 		//$this->db->where('user_id',$userid);
-		$this->db->select('id,title,created');
+		$this->db->select('id,title,created,user_id');
 		$Q = $this->db->get("files");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
