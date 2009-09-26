@@ -33,6 +33,27 @@ class m_comments extends Model{
 		}
 		return $data;		
 	}
+
+
+	function list_comments_single($id,$object){
+		$data = array();	
+		$this->db->select('id,object_id,comment,user_id,created');
+		$this->db->where_in("object_id",$id);
+		$this->db->where('object',$object);
+		$this->db->order_by('created','asc');
+		$Q = $this->db->get("comments");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->object_id][$row->id] = $row;
+			}
+		}
+		$Q->free_result();		
+		return $data;		
+	}
+
+
+
+
 	
 	function add_comment(){
 		

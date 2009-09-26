@@ -186,6 +186,25 @@ class m_tags extends Model{
 	
 	}
 
+	function list_tag_objects_single($id,$object){
+		//$userid = $_SESSION['userid'];
+		//$this->db->where("user_id",$userid);
+		$data = array();
+		$this->db->select("tag,object_id");
+		$this->db->where("object",$object);
+		$this->db->where("object_id",$id);
+		$Q = $this->db->get("tags");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->object_id][] = $row->tag;
+			}
+		}
+		
+
+		$Q->free_result();		
+		return $data;		
+	
+	}
 	
 	function delete_tag($id){
 		$this->db->limit(1);
