@@ -301,8 +301,11 @@ class m_users extends Model{
 			$data = $Q->row();
 		}		
 		//echo $this->db->last_query();
-		echo base64_decode($data->photo);
-
+		if (strlen($data->photo)){
+			echo base64_decode($data->photo);
+		}else{
+			echo img('img/fpo.gif');
+		}
 	}
 
 	
