@@ -1,0 +1,143 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/* globalnav */
+
+ul.globalnav
+{
+padding-left: 0;
+margin-left: 0;
+background-color: #036;
+color: White;
+float: left;
+font-family: arial, helvetica, sans-serif;
+}
+
+ul.globalnav li { display: inline; }
+
+ul.globalnav li a
+{
+font-weight:400;
+padding: 0.2em 1em;
+background-color: #036;
+color: White;
+text-decoration: none;
+float: left;
+border-right: 1px solid #fff;
+}
+
+ul.globalnav li a:hover
+{
+background-color: #369;
+color: #fff;
+}
+
+/* images */
+img {
+	padding:5px;
+
+}
+
+/* localnav */
+ul.localnav p {
+	margin-top:20px;
+	padding-bottom: 10px;
+}
+
+ul.localnav {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;			
+	float: left;
+	width: 140px;
+}
+
+ul.localnav a {
+	display: block;
+	padding: 5px;
+	width: 140px;
+	border-bottom: 1px solid #CCC;
+}
+
+ul.localnav a:link, ul.localnav a:visited {
+	color:#CC6714;
+	text-decoration: none;
+}
+
+ul.localnav a:hover {
+	background: #000000 url(arrow.gif) 96% 50% no-repeat;
+	background-color: #F5F5F5;
+	color:#CC6714;
+}
+
+
+
+/* comments */
+ol.comments li{
+	background-color: #f1f1f2;
+	padding: 2px;
+	width: 17em;
+	border:1px solid #444;
+	margin-bottom:3px;
+}
+
+
+/* form stuff */
+form {
+	/* float:right;
+	margin-top: -45px;*/
+	font-size: 9px;
+	margin-bottom: 25px;
+}
+		
+label{
+	display:block;
+}
+
+
+/* headers */
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 32px;
+	color: #CC6633;
+	margin-bottom: 30px;
+	background-color: #FFF;
+}
+
+h2 {
+	color: #666666;
+	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #FFF;
+}
+	
+	
+/* links */
+a {
+	color:#CC6714;
+	text-decoration: none;
+}
+
+a:hover {
+	color:#CC6714;
+	background-color: #F5F5F5;
+}
+
+		
+/* -------------------------------------------------------------------
+borrowed heavily from 960 Grid &&  Leaves v1.0 - Anthonyy @ OSWD.org
+---------------------------------------------------------------------- */
+
+
+
+		
+		
+		
+		
+
+		
+
+
