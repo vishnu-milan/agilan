@@ -15,6 +15,7 @@ class Agilan extends Controller {
 		$_SESSION['my_follow_tags'] = $this->m_tags->list_tags($_SESSION['userid']);
 		$_SESSION['sidebar1'] = 'agilan/sidebar1';
 		$_SESSION['sidebar2'] = 'agilan/sidebar2';
+		$_SESSION['globalnav'] = 'agilan/globalnav';
 	}
 	
 	function index(){

@@ -9,6 +9,8 @@ class Welcome extends Controller {
 
 		$_SESSION['sidebar1'] = 'welcome/blank';
 		$_SESSION['sidebar2'] = 'welcome/blank';
+		$_SESSION['globalnav'] = 'welcome/blank';
+
 
 
 	}
