@@ -11,8 +11,8 @@ ul.globalnav
 {
 padding-left: 0;
 margin-left: 0;
-background-color: #036;
-color: White;
+background-color: #8D2C25;
+color: #ffffff;
 float: left;
 font-family: arial, helvetica, sans-serif;
 }
@@ -23,7 +23,7 @@ ul.globalnav li a
 {
 font-weight:400;
 padding: 0.2em 1em;
-background-color: #036;
+background-color: #8D2C25;
 color: White;
 text-decoration: none;
 float: left;
@@ -32,7 +32,7 @@ border-right: 1px solid #fff;
 
 ul.globalnav li a:hover
 {
-background-color: #369;
+background-color: #976D6B;
 color: #fff;
 }
 

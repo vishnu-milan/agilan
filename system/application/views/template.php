@@ -14,7 +14,7 @@ echo link_tag('css/local.css');
 <!-- header -->
 <div class="container_12">
 	<div class="grid_2">
-	<?php echo img('img/agilan.jpg');?>
+	<?php echo anchor('agilan/index',img('img/agilan.jpg'));?>
 	</div>
 	
 	<div class='grid_7'>
