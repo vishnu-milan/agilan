@@ -1,6 +1,7 @@
 <?php
 
 echo heading("My Tags", 2);
+echo anchor("tags/all", "see all tags");
 
 echo form_open('tags/update');
 $input = array('name' => 'tag', 'id' => 'tag', 'size'=> 20);

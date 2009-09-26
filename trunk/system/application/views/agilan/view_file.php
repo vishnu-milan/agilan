@@ -18,6 +18,7 @@ if (isset($file_tags[$results->id]) && count($file_tags[$results->id])){
 	echo implode(",",$file_tags[$results->id]);
 }
 echo "</small>";
+echo br(2);
 
 echo "<ol class='comments'>";
 if (isset($comments[$results->id]) && count($comments[$results->id]) > 0){
@@ -35,7 +36,7 @@ if (isset($comments[$results->id]) && count($comments[$results->id]) > 0){
 }
 
 echo form_open('comments/index');
-$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 15);
+$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 45);
 echo form_input($input);
 echo form_hidden('object','files');
 echo form_hidden('object_id',$results->id);
