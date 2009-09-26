@@ -14,7 +14,7 @@ echo link_tag('css/local.css');
 <!-- header -->
 <div class="container_12">
 	<div class="grid_2">
-	<?php echo anchor("welcome/index","agilan");?>
+	<?php echo img('img/agilan.jpg');?>
 	</div>
 	
 	<div class='grid_7'>
@@ -36,10 +36,10 @@ echo link_tag('css/local.css');
 
 <!-- main body -->
 <div class="container_12">
-	<div class="grid_3">
+	<div class="grid_2">
 	<?php $this->load->view($_SESSION['sidebar1']);?>
 	</div>
-	<div class="grid_6">
+	<div class="grid_7">
 	<?php $this->load->view($main_view);?>
 	</div>
 
@@ -49,12 +49,7 @@ echo link_tag('css/local.css');
 
 </div>
 
-<!-- footer -->
-<div class="container_12">
-	<div class="grid_4">
-	<p>Thanks for using agilan....</p>
-	</div>
-</div>
+
 
 
 </body>

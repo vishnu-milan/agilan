@@ -10,7 +10,7 @@ if (isset($_SESSION['message'])){
 }
 
 echo form_open('updates/index');
-$input = array('name' => 'status', 'id' => 'status', 'size'=> 30);
+$input = array('name' => 'status', 'id' => 'status', 'size'=> 50);
 echo form_input($input);
 echo form_submit('update','update');
 echo form_close();
@@ -64,7 +64,7 @@ if (count($updates)){
 		}
 		
 		echo form_open('comments/index');
-		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 20);
+		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 40);
 		echo form_input($input);
 		echo form_hidden('object','updates');
 		echo form_hidden('object_id',$list->id);
