@@ -44,6 +44,20 @@ class m_posts extends Model{
 		$Q->free_result();		
 		return $data;		
 	}
+
+	function get_post_short($id){
+		$data = array();
+		$this->db->select('id,title,created,user_id');
+		$this->db->where('id',$id);
+		$this->db->limit(1);
+		$Q = $this->db->get('posts');
+		if ($Q->num_rows() > 0){
+			$data = $Q->row();
+		}
+		
+		$Q->free_result();		
+		return $data;		
+	}
 	
 
 	function add_post(){

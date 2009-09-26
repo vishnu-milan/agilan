@@ -54,6 +54,10 @@ class Tags extends Controller {
 						$results[$obj->object][$obj_id] = $this->m_files->get_file_short($obj_id);
 					break;
 					
+					case "posts":
+						$results[$obj->object][$obj_id] = $this->m_posts->get_post_short($obj_id);
+					break;
+					
 					case "users":
 						$results[$obj->object][$obj_id] = $this->m_users->get_user_short($obj_id);
 					break;
@@ -64,6 +68,7 @@ class Tags extends Controller {
 		$data['results'] = $results;
 		$data['tagname'] = $tag;
 		$data['title'] = 'Show Tag Results: '. $tag;
+		$data['usernames'] = $this->m_users->list_user_names();
 		$data['main_view'] = 'agilan/tag_results';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
