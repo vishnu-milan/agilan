@@ -40,7 +40,16 @@ class Bookmarks extends Controller {
 		$this->load->view('template');	
 	}
 
-
+	function all(){
+		$data['title'] = 'Bookmark Directory';
+		$data['main_view'] = 'agilan/bookmarks_all';
+		$data['results'] = $this->m_bookmarks->list_all_bookmarks();
+		$data['user'] = $_SESSION['logged_in_user'];
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+	
+	
 	function update(){
 		$data['url'] = prep_url($this->input->post('url'));
 		$data['title'] = 'Add Bookmark';
