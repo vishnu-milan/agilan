@@ -16,42 +16,11 @@ $format = "%m/%d/%Y %h:%i %a";
 if (count($results)){
 	foreach ($results as $key => $list){
 		echo auto_link($list->url) . br();
-		echo $list->description . br();
 		$stamp = mysql_to_unix($list->created);
-		
+		echo  anchor("bookmarks/view_bookmark/".$list->id, 'see details') . br();
+
 		echo "<small>" . mdate($format,$stamp). br();
-	
-		if (isset($bookmark_tags[$list->id]) && count($bookmark_tags[$list->id])){
-			echo implode(",",$bookmark_tags[$list->id]);
-		}
 		echo "</small>";
-
-		echo "<ol class='comments'>";
-		if (isset($comments[$list->id]) && count($comments[$list->id]) > 0){
-			foreach ($comments[$list->id] as $kk => $ll){
-				$CID = $ll->user_id;
-				$CU = $usernames[$ll->user_id];
-				$stamp = mysql_to_unix($ll->created);
-				
-				echo "<li><small><b>".$CU . ":</b> " .
-					$ll->comment . "<br/>".
-					mdate($format,$stamp) . "</small></li>";
-			}
-		
-		}else{
-			echo nbs();
-		}
-		
-		echo form_open('comments/index');
-		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 15);
-		echo form_input($input);
-		echo form_hidden('object','bookmarks');
-		echo form_hidden('object_id',$list->id);
-		echo form_hidden('return_url','bookmarks/index');
-		echo form_submit('add comment','comment');
-		echo form_close();
-
-		echo "</ol>";
 
 
 

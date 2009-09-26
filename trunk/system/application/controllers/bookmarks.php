@@ -19,14 +19,26 @@ class Bookmarks extends Controller {
 		$data['main_view'] = 'agilan/bookmark_home';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_bookmarks->list_bookmarks();
-		$data['bookmark_tags'] = $this->m_tags->list_tag_objects("bookmarks");
-		$data['comments'] = $this->m_comments->list_comments(array_keys($data['results']),'bookmarks');
+		//$data['bookmark_tags'] = $this->m_tags->list_tag_objects("bookmarks");
+		//$data['comments'] = $this->m_comments->list_comments(array_keys($data['results']),'bookmarks');
 		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
 	
 
+	function view_bookmark($id){
+		$bookmark = $this->m_bookmarks->get_bookmark($id);
+		$data['title'] = $bookmark->url;
+		$data['main_view'] = 'agilan/view_bookmark';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$data['results'] = $bookmark;
+		$data['usernames'] = $this->m_users->list_user_names();
+		$data['bookmark_tags'] = $this->m_tags->list_tag_objects_single($id,'bookmarks');
+		$data['comments'] = $this->m_comments->list_comments_single($id,'bookmarks');
+		$this->load->vars($data);
+		$this->load->view('template');	
+	}
 
 
 	function update(){
