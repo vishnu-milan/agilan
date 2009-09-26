@@ -19,7 +19,8 @@ if (count($results)){
 					echo auto_link($list->url) . br();
 					echo $list->description . br();
 					$stamp = mysql_to_unix($list->created);
-					echo "<small>" . mdate($format,$stamp). br() . "</small>";
+					echo "<small>posted " . mdate($format,$stamp);
+					echo " by ". $usernames[$list->user_id]. br();		
 					echo br(2);
 					echo "</blockquote>";
 
@@ -31,12 +32,26 @@ if (count($results)){
 					echo $list->description . br();
 					$stamp = mysql_to_unix($list->created);
 					echo  anchor("files/download/".$list->id, $list->title) . br();
-					echo "<small>" . mdate($format,$stamp). br() . "</small>";
+					echo "<small>uploaded " . mdate($format,$stamp);
+					echo " by ". $usernames[$list->user_id]. br();		
 					echo br(2);
 					echo "</blockquote>";
 
 				break;
 				
+
+				case "posts":
+					echo "<blockquote>";
+					echo $list->title . br();
+					$stamp = mysql_to_unix($list->created);
+					echo  anchor("blog/view_post/".$list->id, "view post") . br();
+					echo "<small>posted " . mdate($format,$stamp);
+					echo " by ". $usernames[$list->user_id]. br();		
+					echo br(2);
+					echo "</blockquote>";
+
+				break;
+
 				case "users":
 					echo "<blockquote>";
 					echo anchor("users/home/".$list->username, $list->firstname . " ". $list->lastname);
