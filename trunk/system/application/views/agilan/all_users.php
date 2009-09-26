@@ -27,7 +27,7 @@ if (count($results)){
 			}
 		}
 		
-		echo "Email: ". $person->email;
+		echo "Email: ". mailto($person->email,$person->email);
 		echo br();
 		echo "Phone: ". $person->phone;
 		echo br();

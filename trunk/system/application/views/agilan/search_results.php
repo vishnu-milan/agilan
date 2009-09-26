@@ -20,7 +20,7 @@ if (count($results)){
 			echo anchor("users/follow/".$person->id, "follow status updates");
 			echo br();
 		}
-		echo "Email: ". $person->email;
+		echo "Email: ". mailto($person->email,$person->email);
 		echo br();
 		echo "Phone: ". $person->phone;
 		echo br(2);
