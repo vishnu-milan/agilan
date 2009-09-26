@@ -10,19 +10,19 @@ echo img($properties,true);
 echo br();
 $properties = array();
 
-echo heading('Short Biography', 4);
+echo form_label('Short Biography', 'bio');
 echo $user['bio'];
 
-echo heading('Expertise/Interests', 4);
+echo form_label('Expertise/Interests', 'tags');
 echo $user['tags'];
 
-echo heading('Email address', 4);
-echo $user['email'];
+echo form_label('Email address', 'email');
+echo mailto($user['email'],$user['email']);
 
-echo heading('Phone number', 4);
+echo form_label('Phone number', 'phone');
 echo $user['phone'];
 
-echo heading('Username', 4);
+echo form_label('Username', 'username');
 echo $user['username'];
 
 
