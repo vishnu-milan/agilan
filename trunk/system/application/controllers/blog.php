@@ -36,7 +36,6 @@ class Blog extends Controller {
 		$data['usernames'] = $this->m_users->list_user_names();
 		$data['post_tags'] = $this->m_tags->list_tag_objects_single($id,'posts');
 		$data['comments'] = $this->m_comments->list_comments_single($id,'posts');
-
 		$this->load->vars($data);
 		$this->load->view('template');
 	

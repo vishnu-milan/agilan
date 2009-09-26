@@ -18,14 +18,27 @@ class Files extends Controller {
 		$data['title'] = 'List of Files';
 		$data['main_view'] = 'agilan/files_home';
 		$data['user'] = $_SESSION['logged_in_user'];
-		$data['results'] = $this->m_files->list_files();
-		$data['file_tags'] = $this->m_tags->list_tag_objects("files");
-		$data['comments'] = $this->m_comments->list_comments(array_keys($data['results']),'files');
+		$data['results'] = $this->m_files->list_files_short();
+		//$data['file_tags'] = $this->m_tags->list_tag_objects("files");
+		//$data['comments'] = $this->m_comments->list_comments(array_keys($data['results']),'files');
 		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
 	
+
+	function view_file($id){
+		$file = $this->m_files->get_file($id);
+		$data['title'] = $file->title;
+		$data['main_view'] = 'agilan/view_file';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$data['results'] = $file;
+		$data['usernames'] = $this->m_users->list_user_names();
+		$data['file_tags'] = $this->m_tags->list_tag_objects_single($id,'files');
+		$data['comments'] = $this->m_comments->list_comments_single($id,'files');
+		$this->load->vars($data);
+		$this->load->view('template');	
+	}
 
 	function download($id){
 		/* $name = $this->m_files->get_name($id);
