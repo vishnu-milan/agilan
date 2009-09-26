@@ -18,8 +18,8 @@ class m_files extends Model{
 		parent::Model();
 	}
 	
-	function list_files($userid){
-		$this->db->where('user_id',$userid);
+	function list_files(){
+		//$this->db->where('user_id',$userid);
 		$Q = $this->db->get("files");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
@@ -62,7 +62,6 @@ class m_files extends Model{
 	}
 	
 	function delete_file($id){
-		//we need to add a bit in here where the file is removed from the location!
 		$this->db->limit(1);
 		$this->db->where('id', $id);
 		$this->db->delete('files');	

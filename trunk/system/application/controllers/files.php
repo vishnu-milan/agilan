@@ -18,7 +18,7 @@ class Files extends Controller {
 		$data['title'] = 'List of Files';
 		$data['main_view'] = 'agilan/files_home';
 		$data['user'] = $_SESSION['logged_in_user'];
-		$data['results'] = $this->m_files->list_files($_SESSION['userid']);
+		$data['results'] = $this->m_files->list_files();
 		$data['file_tags'] = $this->m_tags->list_tag_objects("files");
 		$data['comments'] = $this->m_comments->list_comments(array_keys($data['results']),'files');
 		$data['usernames'] = $this->m_users->list_user_names();

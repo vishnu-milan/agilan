@@ -18,6 +18,7 @@ class m_messages extends Model{
 	}
 	
 	function list_messages_to($userid,$location='inbox'){
+		$data = array();
 		$this->db->where('to_id',$userid);
 		$this->db->where('location',$location);
 		$this->db->order_by('created','desc');
@@ -26,16 +27,14 @@ class m_messages extends Model{
 			foreach ($Q->result() as $row){
 				$data[] = $row;
 			}
-		}else{
-			$data = array();
 		}
-		
 		//echo $this->db->last_query();
 		$Q->free_result();		
 		return $data;		
 	}
 
 	function list_messages_from($userid){
+		$data = array();
 		$this->db->where('from_id',$userid);
 		$this->db->where('location','sent');
 		$this->db->order_by('created','desc');
@@ -44,8 +43,6 @@ class m_messages extends Model{
 			foreach ($Q->result() as $row){
 				$data[] = $row;
 			}
-		}else{
-			$data = array();
 		}
 		$Q->free_result();		
 		return $data;		
@@ -53,13 +50,12 @@ class m_messages extends Model{
 
 
 	function get_message($id){
+		$data = array();
 		$this->db->where('id',$id);
 		$this->db->limit(1);
 		$Q = $this->db->get('messages');
 		if ($Q->num_rows() > 0){
 			$data = $Q->row();
-		}else{
-			$data = array();
 		}
 		
 		$Q->free_result();		
