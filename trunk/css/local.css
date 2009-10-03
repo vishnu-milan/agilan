@@ -85,6 +85,22 @@ ol.comments li{
 }
 
 
+/* table stuff */
+
+table.grid {
+	border-top:3px solid #ccc;
+	border-bottom:3px solid #ccc;
+	padding:5px;
+
+}
+
+table.grid tr{
+	border-bottom:1px solid #ccc;
+}
+
+
+
+
 /* form stuff */
 form {
 	/* float:right;
@@ -110,6 +126,8 @@ input[type=submit] {
     border: 1px solid #006;
     background: #9cf;
 }
+
+
 
 /* headers */
 
@@ -140,6 +158,42 @@ a:hover {
 	color:#CC6714;
 	background-color: #F5F5F5;
 }
+
+
+/* tag cloud */
+#tagcloud {
+	background:#f1f1f2;
+	color:#444;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align:center;
+}
+#tagcloud a:link, #tagcloud a:visited {
+	text-decoration:none;
+}
+#tagcloud a:hover, #tagcloud a:active {
+	text-decoration: underline;
+	color: #000;
+}
+#tagcloud span {
+	padding: 4px;
+}
+.smallest {
+	font-size: 18px;
+}
+.small {
+	font-size: 24px;
+}
+.medium {
+	font-size:28px;
+}
+.large {
+	font-size:32px;
+}
+.largest {
+	font-size:36px;
+}
+
 
 
 /* misc */

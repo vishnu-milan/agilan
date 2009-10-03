@@ -64,7 +64,7 @@ class m_files extends Model{
 	}
 	
 	function get_file_short($id){
-		$this->db->select('id,title,description,created');
+		$this->db->select('id,title,description,created,user_id');
 		$this->db->where('id',$id);
 		$this->db->limit(1);
 		$Q = $this->db->get('files');
