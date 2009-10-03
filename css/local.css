@@ -9,6 +9,7 @@ body {
 
 ul.globalnav
 {
+margin-top:30px;
 padding-left: 0;
 margin-left: 0;
 background-color: #8D2C25;
@@ -75,12 +76,12 @@ ul.localnav a:hover {
 
 
 /* comments */
+
 ol.comments li{
 	background-color: #f1f1f2;
 	padding: 2px;
-	width: 22em;
-	border:1px solid #444;
-	margin-bottom:3px;
+	width: 28em;
+	border-bottom:1px solid #ccc;
 }
 
 
@@ -98,6 +99,17 @@ label{
 	margin-top:10px;
 }
 
+input {
+    border: 1px solid #006;
+    background: #ffc;
+    margin-right:3px;
+    margin-top:5px;
+}
+
+input[type=submit] {
+    border: 1px solid #006;
+    background: #9cf;
+}
 
 /* headers */
 

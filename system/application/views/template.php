@@ -17,19 +17,11 @@ echo link_tag('css/local.css');
 	<?php echo anchor('agilan/index',img('img/agilan.jpg'));?>
 	</div>
 	
-	<div class='grid_7'>
+	<div class='grid_9'>
 	<?php $this->load->view($_SESSION['globalnav']);?>
 	</div>
 
-	<div class='grid_2'>
-	<?php
-	echo form_open('agilan/search');
-	$input = array('name' => 'searchterm', 'id' => 'searchterm', 'size'=> 10);
-	echo form_input($input);
-	echo form_submit('search','search');
-	echo form_close();
-	?>	
-	</div>
+
 	
 </div>
 
@@ -39,11 +31,11 @@ echo link_tag('css/local.css');
 	<div class="grid_2">
 	<?php $this->load->view($_SESSION['sidebar1']);?>
 	</div>
-	<div class="grid_7">
+	<div class="grid_6">
 	<?php $this->load->view($main_view);?>
 	</div>
 
-	<div class="grid_2">
+	<div class="grid_3">
 	<?php $this->load->view($_SESSION['sidebar2']);?>
 	</div>
 

@@ -34,7 +34,7 @@ if (isset($comments[$results->id]) && count($comments[$results->id]) > 0){
 }else{
 	echo nbs();
 }
-
+echo "<li>";
 echo form_open('comments/index');
 $input = array('name' => 'comment', 'id' => 'comment', 'size'=> 45);
 echo form_input($input);
@@ -43,7 +43,7 @@ echo form_hidden('object_id',$results->id);
 echo form_hidden('return_url','files/index');
 echo form_submit('add comment','comment');
 echo form_close();
-
+echo "</li>";
 echo "</ol>";
 
 

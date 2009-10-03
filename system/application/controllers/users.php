@@ -18,8 +18,6 @@ class Users extends Controller {
 	function index(){
 		$data['title'] = 'See all users';
 		$data['main_view'] = 'agilan/all_users';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['following'] = $this->m_follows->get_following($_SESSION['userid']);
 		$data['results'] = $this->m_users->list_users();
@@ -31,8 +29,6 @@ class Users extends Controller {
 	function home($username){
 		$data['title'] = 'See profile for '. $username;
 		$data['main_view'] = 'agilan/user_home';
-		$data['sidebar1'] = 'agilan/sidebar1';
-		$data['sidebar2'] = 'agilan/sidebar2';
 		$data['user'] = $this->m_users->get_user_by_username($username);
 		$data['updates'] = $this->m_updates->list_updates($data['user']['id'],10);
 		$following = $this->m_follows->get_following($_SESSION['userid']);
