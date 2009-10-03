@@ -30,7 +30,23 @@ class m_posts extends Model{
 		return $data;			
 	}
 	
-
+	function list_user_posts($limit=5){
+		$userid = $_SESSION['userid'];
+		$data = array();
+		$this->db->select('id,title,created');
+		$this->db->where('user_id',$userid);
+		$this->db->limit($limit);
+		$Q = $this->db->get('posts');
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->id] = $row;
+			}
+		}
+		
+		$Q->free_result();		
+		return $data;			
+	}
+	
 	
 	function get_post($id){
 		$data = array();

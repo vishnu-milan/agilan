@@ -2,7 +2,11 @@
 
 
 echo heading("Tag Results: ". $tagname,2);
-echo anchor("tags/all", "see all tags");
+echo anchor("tags/index", "my tags");
+echo " | ";
+echo anchor("tags/all_alpha", "see all tags (alpha)");
+echo " | ";
+echo anchor("tags/all", "see all tags (cloud)");
 echo br();
 
 //time format!

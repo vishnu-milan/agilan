@@ -47,7 +47,25 @@ class m_files extends Model{
 		$Q->free_result();		
 		return $data;		
 	}
-
+	
+	
+	function list_user_files($limit=5){
+		//$this->db->where('user_id',$userid);
+		$userid = $_SESSION['userid'];
+		$this->db->select('id,title,created,user_id');
+		$this->db->limit($limit);
+		$this->db->where('user_id',$userid);
+		$Q = $this->db->get("files");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[] = $row;
+			}
+		}else{
+			$data = array();
+		}
+		$Q->free_result();		
+		return $data;		
+	}
 	
 	function get_file($id){
 		$this->db->where('id',$id);

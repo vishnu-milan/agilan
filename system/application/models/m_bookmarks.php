@@ -62,6 +62,24 @@ class m_bookmarks extends Model{
 		return $data;		
 	}
 
+
+	function list_user_bookmarks($limit=5){
+		$userid = $_SESSION['userid'];
+		$data = array();
+		$this->db->where('user_id',$userid);
+		$this->db->limit($limit);
+		$this->db->order_by('created','asc');
+		$Q = $this->db->get("bookmarks");
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[$row->id] = $row;
+			}
+		}
+		$Q->free_result();		
+
+		return $data;		
+	}
+
 	function list_all_bookmarks(){
 		$data = array();
 		$this->db->order_by('created','asc');
