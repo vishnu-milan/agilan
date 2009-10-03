@@ -13,8 +13,10 @@ echo link_tag('css/local.css');
 <body>
 <!-- header -->
 <div class="container_12">
-	<div class="grid_2">
-	<?php echo anchor('agilan/index',img('img/agilan.jpg'));?>
+	<div class="grid_2" id="sitelogo">
+	<?php 
+	$props = array('src' => 'img/agilan.jpg');
+	echo anchor('agilan/index',img($props));?>
 	</div>
 	
 	<div class='grid_9'>
