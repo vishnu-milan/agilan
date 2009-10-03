@@ -198,6 +198,10 @@ a:hover {
 
 /* misc */
 
+#sitelogo a:hover{
+	background:none;
+}
+
 .topmargin_12{
 	margin-top:12px;
 }
