@@ -63,14 +63,15 @@ if (count($updates)){
 			echo nbs();
 		}
 		
+		echo "<li>";
 		echo form_open('comments/index');
-		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 40);
+		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 35);
 		echo form_input($input);
 		echo form_hidden('object','updates');
 		echo form_hidden('object_id',$list->id);
 		echo form_submit('add comment','comment');
 		echo form_close();
-
+		echo "</li>";
 		echo "</ol>";
 
 	}
