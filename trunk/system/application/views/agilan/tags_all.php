@@ -8,7 +8,7 @@ echo anchor("tags/all_alpha", "see all tags (alpha)");
 echo form_open('tags/update');
 $input = array('name' => 'tag', 'id' => 'tag', 'size'=> 20);
 echo form_input($input);
-echo form_submit('add tag','add tag');
+echo form_submit('follow tag','follow tag');
 echo form_close();
 
 

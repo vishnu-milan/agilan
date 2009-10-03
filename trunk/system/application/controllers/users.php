@@ -31,6 +31,9 @@ class Users extends Controller {
 		$data['main_view'] = 'agilan/user_home';
 		$data['user'] = $this->m_users->get_user_by_username($username);
 		$data['updates'] = $this->m_updates->list_updates($data['user']['id'],10);
+		$data['posts'] = $this->m_posts->list_user_posts();
+		$data['files'] = $this->m_files->list_user_files();
+		$data['bookmarks'] = $this->m_bookmarks->list_user_bookmarks();
 		$following = $this->m_follows->get_following($_SESSION['userid']);
 		$following[] = $_SESSION['userid'];
 		$data['following'] = $following;

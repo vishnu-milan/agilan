@@ -7,6 +7,7 @@
 	echo form_close();
 	?>	
 <ul class="localnav">
+<li><?php echo anchor("users/home/".$_SESSION['logged_in_user']['username'], 'view profile');?></li>
 <li><?php echo anchor("agilan/edit_profile",'edit profile');?></li>
 <li><?php echo anchor("agilan/logout",'logout');?></li>
 </ul>

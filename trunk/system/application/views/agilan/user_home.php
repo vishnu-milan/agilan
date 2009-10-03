@@ -1,5 +1,4 @@
 <?php
-
 echo heading("Profile for ". $user['firstname'] . " " . $user['lastname'], 2);
 $properties = array(
 			'src' => 'users/get_photo/'. $user['id'],
@@ -24,7 +23,8 @@ echo $user['phone'];
 
 echo form_label('Username', 'username');
 echo $user['username'];
-
+echo br(2);
+$format = "%m/%d/%Y %h:%i %a";
 
 
 
@@ -42,12 +42,56 @@ if ($user['id'] != $_SESSION['userid']){
 if (count($updates)){
 	foreach ($updates as $key => $list){
 		$U = $user['username'];
+		$stamp = mysql_to_unix($list->created);
 		echo "<p><b>".$U . ":</b> " .
-					$list->update . "<br/>".
-					"<small>".$list->created;
+					$list->update . br().
+					"<small>".mdate($format,$stamp);
 	
 		echo "</small></p>";
 
 	}
 }
+
+echo heading("Recent Bookmarks", 2);			
+if (count($bookmarks)){
+	foreach ($bookmarks as $key => $list){
+		$stamp = mysql_to_unix($list->created);
+		echo "<p>" .
+			auto_link($list->url) . br().
+			"<small>added ".mdate($format,$stamp);
+		echo "</small></p>";
+
+	}
+}else{
+	echo "Sorry, no bookmarks by this user available!";
+}
+
+echo heading("Recent Posts", 2);			
+if (count($posts)){
+	foreach ($posts as $key => $list){
+		$stamp = mysql_to_unix($list->created);
+		echo "<p>" .
+			anchor("blog/view_post/".$list->id,$list->title) . br().
+			"<small>posted ".mdate($format,$stamp);
+		echo "</small></p>";
+
+	}
+}else{
+	echo "Sorry, no blog posts by this user available!";
+}
+
+echo heading("Recent Files", 2);			
+if (count($files)){
+	foreach ($files as $key => $list){
+		$stamp = mysql_to_unix($list->created);
+		echo "<p>" .
+			anchor("files/view_file/".$list->id,$list->title) . br().
+			"<small>uploaded ".mdate($format,$stamp);
+		echo "</small></p>";
+
+	}
+}else{
+	echo "Sorry, no files by this user available!";
+}
+
 ?>
