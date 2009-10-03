@@ -27,6 +27,16 @@ class Tags extends Controller {
 	function all(){
 		$data['title'] = 'Tag Directory';
 		$data['main_view'] = 'agilan/tags_all';
+		$data['results'] = $this->m_tags->build_tag_cloud();
+		$data['user'] = $_SESSION['logged_in_user'];
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+
+
+	function all_alpha(){
+		$data['title'] = 'Tag Directory';
+		$data['main_view'] = 'agilan/tags_all_alpha';
 		$data['results'] = $this->m_tags->list_all_tags();
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);

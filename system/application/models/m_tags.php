@@ -25,6 +25,22 @@ class m_tags extends Model{
 	}
 
 
+	function build_tag_cloud(){
+		$data = array();
+		$sql = "SELECT tag,count(*) as ctr FROM `tags` group by tag order by ctr desc";
+		$Q = $this->db->query($sql);
+	
+		if ($Q->num_rows() > 0){
+			foreach ($Q->result() as $row){
+				$data[] = array("tag" => $row->tag, "counter" => $row->ctr);
+			}
+		}
+		$Q->free_result();
+		shuffle($data);
+		return $data;	
+	}
+
+
 	function search_tags($input){
 		$data = array();
 		$term = xss_clean(substr($input,0,255));
@@ -66,14 +82,14 @@ class m_tags extends Model{
 		$data = array();
 		$this->db->select("tag");
 		$this->db->order_by('tag','asc');
-		$Q = $this->db->get("tag_follows");
+		$Q = $this->db->get("tags");
 		if ($Q->num_rows() > 0){
 			foreach ($Q->result() as $row){
-				$data[$row->tag] = $row->tag;
+				$temp[] = $row->tag;
 			}
 		}
 		
-
+		$data = array_unique($temp);
 		$Q->free_result();		
 		return $data;			
 

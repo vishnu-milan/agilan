@@ -6,7 +6,7 @@ echo heading($title, 2);
 //time format!
 $format = "%m/%d/%Y %h:%i %a";
 
-echo $results->description . br();
+echo "Description: ". $results->description . br();
 echo "File type: ". $results->file_type .br();
 echo "File size: " . $results->file_size . br();
 $stamp = mysql_to_unix($results->created);
