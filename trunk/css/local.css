@@ -104,8 +104,16 @@ table.grid tr{
 	border-bottom:1px solid #ccc;
 }
 
+table.messages, table.messages tr, table.messages td{
+	border:1px solid #ccc;
+	padding:10px;
+}
 
-
+table.messages th{
+	border:1px solid #ccc;
+	font-size:12px;
+	font-weight:800;
+}
 
 /* form stuff */
 form {
