@@ -40,9 +40,9 @@ if (isset($comments[$results->id]) && count($comments[$results->id]) > 0){
 }else{
 	echo nbs();
 }
-echo "<li>";
+echo "<li class='last'>";
 echo form_open('comments/index');
-$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 45);
+$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 35);
 echo form_input($input);
 echo form_hidden('object','posts');
 echo form_hidden('object_id',$results->id);
