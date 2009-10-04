@@ -7,23 +7,32 @@ echo anchor("messages/index", "inbox") . nbs(2) . "|" . nbs(2);
 echo "sent" . nbs(2) . "|" . nbs(2);
 echo anchor("messages/archive", "archives");
 
+$TABLE = array();
+
+//time format!
+$format = "%m/%d/%Y %h:%i %a";
+
+
 echo br(2);
 if (count($messages)){
 	foreach ($messages as $key => $msg){
-		echo "Subject: <b>". $msg->subject ."</b>";
-		echo br();
-		echo "From: ". $usernames[$msg->from_id];
-		echo br();
-		echo "To: ". $usernames[$msg->to_id];
-		echo br();
-		echo "Sent: ". $msg->created;
-		echo br();
-		echo auto_typography($msg->message);
-		echo br();
+		$stamp = mysql_to_unix($msg->created);
+		$TABLE[] = $usernames[$msg->from_id];
+		$TABLE[] =	$usernames[$msg->to_id];
+		$TABLE[] = anchor("messages/view_message/".$msg->id, $msg->subject);
+		$TABLE[] =  mdate($format,$stamp);
+	}
 
-		echo anchor("messages/archive_message/".$msg->id, "archive this"); 
-		echo "<hr/>";
-		echo br();	}
+
+	$tmpl = array (
+		'table_open'  => "<table class='messages'><tr valign='bottom'><th>From</th><th>To</th><th>Subject</th><th>Date/Time</th></tr>",
+		'row_start'   => "<tr valign='top'>",
+	);
+	$this->table->set_template($tmpl);
+	$this->table->set_empty("&nbsp;");
+	$pretty = $this->table->make_columns($TABLE,4);
+	
+	echo $this->table->generate($pretty);
 
 }else{
 	echo "No messages in sent folder!";

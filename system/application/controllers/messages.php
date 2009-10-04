@@ -16,6 +16,18 @@ class Messages extends Controller {
 	function inbox(){
 		redirect('messages/index', 'refresh');
 	}
+	
+	
+	function view_message($id){
+		$msg = $this->m_messages->get_message($id);
+		$data['title'] = $msg->subject;
+		$data['main_view'] = 'agilan/view_message';
+		$data['user'] = $_SESSION['logged_in_user'];
+		$data['msg'] = $msg;
+		$data['usernames'] = $this->m_users->list_user_names();
+		$this->load->vars($data);
+		$this->load->view('template');		
+	}
 
 	function index(){
 		$data['title'] = 'Your Inbox';
