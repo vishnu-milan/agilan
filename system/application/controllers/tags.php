@@ -17,7 +17,7 @@ class Tags extends Controller {
 
 	function index(){
 		$data['title'] = 'List of Tags';
-		$data['main_view'] = 'agilan/tags_home';
+		$data['main_view'] = 'tag/tags_home';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_tags->list_tags();
 		$this->load->vars($data);
@@ -26,7 +26,7 @@ class Tags extends Controller {
 
 	function all(){
 		$data['title'] = 'Tag Directory';
-		$data['main_view'] = 'agilan/tags_all';
+		$data['main_view'] = 'tag/tags_all';
 		$data['results'] = $this->m_tags->build_tag_cloud();
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
@@ -36,7 +36,7 @@ class Tags extends Controller {
 
 	function all_alpha(){
 		$data['title'] = 'Tag Directory';
-		$data['main_view'] = 'agilan/tags_all_alpha';
+		$data['main_view'] = 'tag/tags_all_alpha';
 		$data['results'] = $this->m_tags->list_all_tags();
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
@@ -79,7 +79,7 @@ class Tags extends Controller {
 		$data['tagname'] = $tag;
 		$data['title'] = 'Show Tag Results: '. $tag;
 		$data['usernames'] = $this->m_users->list_user_names();
-		$data['main_view'] = 'agilan/tag_results';
+		$data['main_view'] = 'tag/tag_results';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');

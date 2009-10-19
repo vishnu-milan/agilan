@@ -21,7 +21,7 @@ class Messages extends Controller {
 	function view_message($id){
 		$msg = $this->m_messages->get_message($id);
 		$data['title'] = $msg->subject;
-		$data['main_view'] = 'agilan/view_message';
+		$data['main_view'] = 'msg/view_message';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['msg'] = $msg;
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -31,7 +31,7 @@ class Messages extends Controller {
 
 	function index(){
 		$data['title'] = 'Your Inbox';
-		$data['main_view'] = 'agilan/inbox';
+		$data['main_view'] = 'msg/inbox';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['messages'] = $this->m_messages->list_messages_to($_SESSION['userid']);
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -41,7 +41,7 @@ class Messages extends Controller {
 
 	function sent(){
 		$data['title'] = 'Sent Messages';
-		$data['main_view'] = 'agilan/sent';
+		$data['main_view'] = 'msg/sent';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['messages'] = $this->m_messages->list_messages_from($_SESSION['userid']);
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -51,7 +51,7 @@ class Messages extends Controller {
 
 	function archive(){
 		$data['title'] = 'Your Archives';
-		$data['main_view'] = 'agilan/archive';
+		$data['main_view'] = 'msg/archive';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['messages'] = $this->m_messages->list_messages_to($_SESSION['userid'],'archived');
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -61,7 +61,7 @@ class Messages extends Controller {
 
 	function compose(){
 		$data['title'] = 'Compose Message';
-		$data['main_view'] = 'agilan/compose';
+		$data['main_view'] = 'msg/compose';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
@@ -72,7 +72,7 @@ class Messages extends Controller {
 		$data['title'] = 'Respond';
 		$data['respondid'] = $id;
 		$data['message'] = $this->m_messages->get_message($id);
-		$data['main_view'] = 'agilan/respond';
+		$data['main_view'] = 'msg/respond';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['usernames'] = $this->m_users->list_user_names();
 		$this->load->vars($data);
