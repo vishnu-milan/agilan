@@ -17,7 +17,7 @@ class Users extends Controller {
 	
 	function index(){
 		$data['title'] = 'See all users';
-		$data['main_view'] = 'agilan/all_users';
+		$data['main_view'] = 'usr/all_users';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['following'] = $this->m_follows->get_following($_SESSION['userid']);
 		$data['results'] = $this->m_users->list_users();
@@ -28,7 +28,7 @@ class Users extends Controller {
 	
 	function home($username){
 		$data['title'] = 'See profile for '. $username;
-		$data['main_view'] = 'agilan/user_home';
+		$data['main_view'] = 'usr/user_home';
 		$data['user'] = $this->m_users->get_user_by_username($username);
 		$data['updates'] = $this->m_updates->list_updates($data['user']['id'],10);
 		$data['posts'] = $this->m_posts->list_user_posts();

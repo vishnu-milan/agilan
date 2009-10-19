@@ -16,7 +16,7 @@ class Blog extends Controller {
 	
 	function index(){
 		$data['title'] = 'Blog';
-		$data['main_view'] = 'agilan/blog_home';
+		$data['main_view'] = 'blog/blog_home';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_posts->list_posts();
 		//$data['blog_tags'] = $this->m_tags->list_tag_objects("posts");
@@ -30,7 +30,7 @@ class Blog extends Controller {
 	function view_post($id){
 		$post = $this->m_posts->get_post($id);
 		$data['title'] = $post->title;
-		$data['main_view'] = 'agilan/view_blog';
+		$data['main_view'] = 'blog/view_blog';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $post;
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -43,7 +43,7 @@ class Blog extends Controller {
 
 	function update(){
 		$data['title'] = 'Add Blog Post';
-		$data['main_view'] = 'agilan/add_blog';
+		$data['main_view'] = 'blog/add_blog';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');		

@@ -16,7 +16,7 @@ class Bookmarks extends Controller {
 	
 	function index(){
 		$data['title'] = 'List of Bookmarks';
-		$data['main_view'] = 'agilan/bookmark_home';
+		$data['main_view'] = 'bookmark/bookmark_home';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_bookmarks->list_bookmarks();
 		//$data['bookmark_tags'] = $this->m_tags->list_tag_objects("bookmarks");
@@ -30,7 +30,7 @@ class Bookmarks extends Controller {
 	function view_bookmark($id){
 		$bookmark = $this->m_bookmarks->get_bookmark($id);
 		$data['title'] = $bookmark->url;
-		$data['main_view'] = 'agilan/view_bookmark';
+		$data['main_view'] = 'bookmark/view_bookmark';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $bookmark;
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -42,7 +42,7 @@ class Bookmarks extends Controller {
 
 	function all(){
 		$data['title'] = 'Bookmark Directory';
-		$data['main_view'] = 'agilan/bookmarks_all';
+		$data['main_view'] = 'bookmark/bookmarks_all';
 		$data['results'] = $this->m_bookmarks->list_all_bookmarks();
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -54,7 +54,7 @@ class Bookmarks extends Controller {
 	function update(){
 		$data['url'] = prep_url($this->input->post('url'));
 		$data['title'] = 'Add Bookmark';
-		$data['main_view'] = 'agilan/add_bookmark';
+		$data['main_view'] = 'bookmark/add_bookmark';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');		

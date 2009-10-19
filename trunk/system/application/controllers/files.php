@@ -16,7 +16,7 @@ class Files extends Controller {
 	
 	function index(){
 		$data['title'] = 'List of Files';
-		$data['main_view'] = 'agilan/files_home';
+		$data['main_view'] = 'file/files_home';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $this->m_files->list_files_short();
 		//$data['file_tags'] = $this->m_tags->list_tag_objects("files");
@@ -30,7 +30,7 @@ class Files extends Controller {
 	function view_file($id){
 		$file = $this->m_files->get_file($id);
 		$data['title'] = $file->title;
-		$data['main_view'] = 'agilan/view_file';
+		$data['main_view'] = 'file/view_file';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$data['results'] = $file;
 		$data['usernames'] = $this->m_users->list_user_names();
@@ -60,7 +60,7 @@ class Files extends Controller {
 		}
 
 		$data['title'] = 'Add File Details';
-		$data['main_view'] = 'agilan/add_file';
+		$data['main_view'] = 'file/add_file';
 		$data['user'] = $_SESSION['logged_in_user'];
 		$this->load->vars($data);
 		$this->load->view('template');		
