@@ -15,7 +15,7 @@ $format = "%m/%d/%Y %h:%i %a";
 
 if (count($results)){
 	foreach ($results as $key => $list){
-		echo auto_link($list->url) . br();
+		echo auto_link($list->url,'url',TRUE) . br();
 		$stamp = mysql_to_unix($list->created);
 		echo  anchor("bookmarks/view_bookmark/".$list->id, 'see details') . br();
 

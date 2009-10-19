@@ -5,7 +5,7 @@ echo heading($title, 2);
 $format = "%m/%d/%Y %h:%i %a";
 
 
-echo auto_link($results->url) . br();
+echo auto_link($results->url,'url',TRUE) . br();
 echo $results->description . br();
 $stamp = mysql_to_unix($results->created);
 
