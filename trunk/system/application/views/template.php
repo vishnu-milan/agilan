@@ -11,6 +11,7 @@ echo link_tag('assets/css/local.css');
 ?>
 
 <script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.validate.js"></script>
 </head>
 <body>
 <!-- header -->

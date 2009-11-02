@@ -48,6 +48,8 @@ class Welcome extends Controller {
 	}
 	
 	function create(){
+
+
 		$try = $this->m_users->add_user();
 		
 		if ($try){
@@ -67,10 +69,7 @@ class Welcome extends Controller {
 
 		$this->load->vars($data);
 		$this->load->view('template');	
-	
-	
 	}
-	
 }
 
 /* End of file welcome.php */

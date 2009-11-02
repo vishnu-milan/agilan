@@ -1,3 +1,26 @@
+<script type="text/javascript">
+	//initiate validator on load
+	$(function() {
+		
+		// validate contact form on keyup and submit
+		$("#statusUpdate").validate({
+			//set the rules for the fild names
+			rules: {
+				status: {
+					required: true,
+					minlength: 2
+				},
+
+				
+			},
+			//set messages to appear inline
+			messages: {
+				status: "Please enter a status",
+			}
+		});
+	});
+</script>
+
 <?php
 /* needs: cleaned up udpates, updates that gets following's updates
 */
@@ -9,7 +32,10 @@ if (isset($_SESSION['message'])){
 	unset($_SESSION['message']);
 }
 
-echo form_open('updates/index');
+
+$attributes = array('id' => 'statusUpdate');
+
+echo form_open('updates/index',$attributes);
 $input = array('name' => 'status', 'id' => 'status', 'size'=> 50);
 echo form_input($input);
 echo form_submit('update','update');
