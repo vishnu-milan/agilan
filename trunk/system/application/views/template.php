@@ -4,10 +4,10 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
  <title><?php echo $title;?></title>
 <?php
-echo link_tag('css/960.css');
-echo link_tag('css/reset.css');
-echo link_tag('css/text.css');
-echo link_tag('css/local.css');
+echo link_tag('assets/css/960.css');
+echo link_tag('assets/css/reset.css');
+echo link_tag('assets/css/text.css');
+echo link_tag('assets/css/local.css');
 ?>
 </head>
 <body>
@@ -15,7 +15,7 @@ echo link_tag('css/local.css');
 <div class="container_12">
 	<div class="grid_2" id="sitelogo">
 	<?php 
-	$props = array('src' => 'img/agilan.jpg');
+	$props = array('src' => 'assets/img/agilan.jpg');
 	echo anchor('agilan/index',img($props));?>
 	</div>
 	
