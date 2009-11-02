@@ -3,7 +3,7 @@
 echo heading("Bookmarks Directory", 2);
 
 echo form_open('bookmarks/update');
-$input = array('name' => 'url', 'id' => 'url', 'size'=> 20);
+$input = array('name' => 'url', 'id' => 'url', 'size'=> 20, 'class' => ':required :only_on_submit');
 echo form_input($input);
 echo form_submit('add bookmark','add');
 echo form_close();

@@ -8,7 +8,7 @@ echo heading("Add Bookmark", 2);
 echo form_open('bookmarks/insert');
 
 echo form_label('URL', 'url');
-$input = array('name' => 'url', 'id' => 'url', 'size'=> 40, 'value' => $url);
+$input = array('name' => 'url', 'id' => 'url', 'size'=> 40, 'value' => $url, 'class' => ':required :only_on_submit');
 echo form_input($input);
 
 
@@ -17,7 +17,7 @@ $input = array('name' => 'description', 'id' => 'description', 'rows'=> 10, 'col
 echo form_textarea($input);
 
 echo form_label('Tags', 'tags');
-$input = array('name' => 'tags', 'id' => 'tags', 'size'=> 40);
+$input = array('name' => 'tags', 'id' => 'tags', 'size'=> 40, 'class' => ':required :only_on_submit');
 echo form_input($input);
 
 

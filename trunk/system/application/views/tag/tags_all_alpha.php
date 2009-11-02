@@ -6,7 +6,7 @@ echo " | ";
 echo anchor("tags/all", "see all tags (cloud)");
 
 echo form_open('tags/update');
-$input = array('name' => 'tag', 'id' => 'tag', 'size'=> 20);
+$input = array('name' => 'tag', 'id' => 'tag', 'size'=> 20, 'class' => ':required :only_on_submit');
 echo form_input($input);
 echo form_submit('follow tag','follow tag');
 echo form_close();

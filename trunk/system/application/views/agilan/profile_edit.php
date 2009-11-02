@@ -23,15 +23,15 @@ echo form_label('Your username', 'username');
 echo "<b>".$user['username'] ."</b>";
 
 echo form_label('Your first name', 'firstname');
-$input = array('name' => 'firstname', 'id' => 'firstname', 'size'=> 40, 'value' => $user['firstname']);
+$input = array('name' => 'firstname', 'id' => 'firstname', 'size'=> 40, 'value' => $user['firstname'],'class' => ':required :only_on_submit');
 echo form_input($input);
 
 echo form_label('Your last name', 'lastname');
-$input = array('name' => 'lastname', 'id' => 'lastname', 'size'=> 40, 'value' => $user['lastname']);
+$input = array('name' => 'lastname', 'id' => 'lastname', 'size'=> 40, 'value' => $user['lastname'],'class' => ':required :only_on_submit');
 echo form_input($input);
 
 echo form_label('Your email address', 'email');
-$input = array('name' => 'email', 'id' => 'email', 'size'=> 40, 'value' => $user['email']);
+$input = array('name' => 'email', 'id' => 'email', 'size'=> 40, 'value' => $user['email'],'class' => ':email :required :only_on_submit');
 echo form_input($input);
 
 echo form_label('Your phone number', 'phone');
@@ -40,8 +40,14 @@ echo form_input($input);
 
 
 echo form_label('Choose a new password', 'password');
-$input = array('name' => 'password', 'id' => 'password', 'size'=> 20);
+$input = array('name' => 'password', 'id' => 'password', 'size'=> 20,'class' => ':required');
 echo form_input($input);
+
+
+echo form_label('Confirm password', 'confirm');
+$input = array('name' => 'confirm', 'id' => 'confirm', 'size'=> 20,'class' => ':same_as;password');
+echo form_input($input);
+
 
 echo form_label('A short bio of yourself', 'bio');
 $input = array('name' => 'bio', 'id' => 'bio', 'rows'=> 10, 'cols' => 35,'value' => $user['bio']);

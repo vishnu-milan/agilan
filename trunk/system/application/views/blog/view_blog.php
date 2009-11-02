@@ -42,7 +42,7 @@ if (isset($comments[$results->id]) && count($comments[$results->id]) > 0){
 }
 echo "<li class='last'>";
 echo form_open('comments/index');
-$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 35);
+$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 35, 'class' => ':required :only_on_submit');
 echo form_input($input);
 echo form_hidden('object','posts');
 echo form_hidden('object_id',$results->id);
