@@ -218,6 +218,14 @@ a:hover {
 
 
 /* misc */
+.error {
+	color: red;
+	font-weight:bold;
+	font: 12px Arial, Helvetica, sans-serif;
+	padding-left: 10px;
+
+}
+
 
 #sitelogo a:hover{
 	background:none;

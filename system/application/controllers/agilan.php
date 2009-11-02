@@ -7,7 +7,7 @@ class Agilan extends Controller {
 	{
 		parent::Controller();	
 		
-		if ($_SESSION['userid'] <= 0){
+		if (!isset($_SESSION['userid']) or $_SESSION['userid'] <= 0){
 			redirect('/welcome/index', 'refresh');
 		}
 		

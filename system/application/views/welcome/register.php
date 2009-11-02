@@ -1,3 +1,41 @@
+<script type="text/javascript">
+	//initiate validator on load
+	$(function() {
+		
+		// validate contact form on keyup and submit
+		$("#registerForm").validate({
+			//set the rules for the fild names
+			rules: {
+				firstname: {
+					required: true,
+					minlength: 2
+				},
+			lastname: {
+					required: true,
+					minlength: 2
+				},
+			username: {
+					required: true,
+					minlength: 2
+				},
+			email: {
+					required: true,
+					email: true
+				},
+					
+				
+			},
+			//set messages to appear inline
+			messages: {
+				firstname: "Please enter your first name",
+				lastname: "Please enter your last name",
+				email: "Please enter a valid email address",
+				username: "Please enter a username"
+			}
+		});
+	});
+</script>
+
 <?php
 /*
 needs: form validation, upload of photo
@@ -5,7 +43,8 @@ needs: form validation, upload of photo
 
 
 echo heading("Please register!", 2);
-echo form_open_multipart('welcome/create');
+$attributes = array('id' => 'registerForm');
+echo form_open_multipart('welcome/create',$attributes);
 
 
 echo form_label("Your profile image", 'photo');

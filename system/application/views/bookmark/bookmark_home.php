@@ -1,8 +1,36 @@
+<script type="text/javascript">
+	//initiate validator on load
+	$(function() {
+		
+		// validate contact form on keyup and submit
+		$("#addBookmark").validate({
+			//set the rules for the fild names
+			rules: {
+				url: {
+					required: true,
+					minlength: 2
+				},
+				tags: {
+					required: true,
+					minlength: 1
+				},
+
+				
+			},
+			//set messages to appear inline
+			messages: {
+				url: "Please enter a URL",
+				tags: "Please enter at least one tag",
+			}
+		});
+	});
+</script>
+
 <?php
 
 echo heading("My Bookmarks", 2);
-
-echo form_open('bookmarks/update');
+$attributes = array('id' => 'addBookmark');
+echo form_open('bookmarks/update',$attributes);
 $input = array('name' => 'url', 'id' => 'url', 'size'=> 20);
 echo form_input($input);
 echo form_submit('add bookmark','add');

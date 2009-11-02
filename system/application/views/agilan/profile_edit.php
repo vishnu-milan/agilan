@@ -1,3 +1,41 @@
+<script type="text/javascript">
+	//initiate validator on load
+	$(function() {
+		
+		// validate contact form on keyup and submit
+		$("#profileForm").validate({
+			//set the rules for the fild names
+			rules: {
+				firstname: {
+					required: true,
+					minlength: 2
+				},
+			lastname: {
+					required: true,
+					minlength: 2
+				},
+			username: {
+					required: true,
+					minlength: 2
+				},
+			email: {
+					required: true,
+					email: true
+				},
+					
+				
+			},
+			//set messages to appear inline
+			messages: {
+				firstname: "Please enter your first name",
+				lastname: "Please enter your last name",
+				email: "Please enter a valid email address",
+				username: "Please enter a username"
+			}
+		});
+	});
+</script>
+
 <?php
 /*
 needs: form validation, upload of photo
@@ -5,7 +43,8 @@ needs: form validation, upload of photo
 
 
 echo heading("Update your profile!", 2);
-echo form_open_multipart('agilan/update_profile');
+$attributes = array('id' => 'profileForm');
+echo form_open_multipart('agilan/update_profile',$attributes);
 
 
 $properties = array(
