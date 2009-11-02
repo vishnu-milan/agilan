@@ -13,15 +13,15 @@ echo form_hidden("MAX_FILE_SIZE",'80000');
 echo "<input type='file' name='photo' id='photo' size='20' />";
 
 echo form_label('Your first name', 'firstname');
-$input = array('name' => 'firstname', 'id' => 'firstname', 'size'=> 40);
+$input = array('name' => 'firstname', 'id' => 'firstname', 'size'=> 40, 'class' => ':required :only_on_submit');
 echo form_input($input);
 
 echo form_label('Your last name', 'lastname');
-$input = array('name' => 'lastname', 'id' => 'lastname', 'size'=> 40);
+$input = array('name' => 'lastname', 'id' => 'lastname', 'size'=> 40, 'class' => ':required :only_on_submit');
 echo form_input($input);
 
 echo form_label('Your email address', 'email');
-$input = array('name' => 'email', 'id' => 'email', 'size'=> 40);
+$input = array('name' => 'email', 'id' => 'email', 'size'=> 40, 'class' => ':email :required :only_on_submit');
 echo form_input($input);
 
 echo form_label('Your phone number', 'phone');
@@ -30,7 +30,7 @@ echo form_input($input);
 
 
 echo form_label('Choose a username', 'username');
-$input = array('name' => 'username', 'id' => 'username', 'size'=> 40);
+$input = array('name' => 'username', 'id' => 'username', 'size'=> 40, 'class' => ':required :only_on_submit');
 echo form_input($input);
 
 echo br();
