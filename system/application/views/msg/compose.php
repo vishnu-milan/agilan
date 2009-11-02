@@ -12,7 +12,7 @@ unset($usernames[$_SESSION['userid']]);
 echo form_dropdown('to_id',$usernames);
 
 echo form_label('Subject', 'subject');
-$input = array('name' => 'subject', 'id' => 'subject', 'size'=> 40, 'class' => ':required :only_on_submit');
+$input = array('name' => 'subject', 'id' => 'subject', 'size'=> 40);
 echo form_input($input);
 
 

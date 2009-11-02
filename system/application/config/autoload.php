@@ -63,7 +63,7 @@ $autoload['helper'] = array('html','url','form','text','string','date','security
 |	$autoload['plugin'] = array('captcha', 'js_calendar');
 */
 
-$autoload['plugin'] = array();
+$autoload['plugin'] = array('social');
 
 
 /*

@@ -10,14 +10,13 @@ if (isset($_SESSION['message'])){
 }
 
 echo form_open('updates/index');
-$input = array('name' => 'status', 'id' => 'status', 'size'=> 50, 'class' => ':required :only_on_submit');
+$input = array('name' => 'status', 'id' => 'status', 'size'=> 50);
 echo form_input($input);
 echo form_submit('update','update');
 echo form_close();
 		
-		
-//time format!
 $format = "%m/%d/%Y %h:%i %a";
+	
 
 
 
@@ -46,33 +45,8 @@ if (count($updates)){
 			echo nbs() . anchor('users/unfollow/'. $ID, 'unfollow');
 		}
 		echo "</small></p>";
-
-		echo "<ol class='comments'>";
-		if (isset($comments[$list->id]) && count($comments[$list->id]) > 0){
-			foreach ($comments[$list->id] as $kk => $ll){
-				$CID = $ll->user_id;
-				$CU = $usernames[$ll->user_id];
-				
-				$stamp = mysql_to_unix($ll->created);
-				
-				echo "<li><b>".$CU . ":</b> <small>" .
-					$ll->comment . "<br/>".
-					mdate($format,$stamp) . "</small></li>";
-			}
-		}else{
-			echo nbs();
-		}
 		
-		echo "<li class='last'>";
-		echo form_open('comments/index');
-		$input = array('name' => 'comment', 'id' => 'comment', 'size'=> 35, 'class' => ':required :only_on_submit');
-		echo form_input($input);
-		echo form_hidden('object','updates');
-		echo form_hidden('object_id',$list->id);
-		echo form_submit('add comment','comment');
-		echo form_close();
-		echo "</li>";
-		echo "</ol>";
+		comments($comments,$list->id,'updates',$usernames,$format);
 
 	}
 }

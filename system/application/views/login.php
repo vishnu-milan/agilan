@@ -10,7 +10,6 @@ echo link_tag('assets/css/text.css');
 echo link_tag('assets/css/local.css');
 ?>
 
-<script type="text/javascript" src="<?php echo base_url();?>assets/js/jquery.js"></script>
 </head>
 <body>
 <!-- header -->
