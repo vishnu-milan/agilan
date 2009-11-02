@@ -248,9 +248,10 @@ class m_tags extends Model{
 		
 		//now add the new stuff
 		foreach ($tags_array as $tag){
-			
+			$disallowed = array(" ", "/", "[", "]", "?", "(", ")" ,"{", "}" ,"=", "'", '"', ',' , ';', ':');
+			$cleantag = str_replace($disallowed,"",$tag);
 			$data = array(
-				'tag' => xss_clean($tag),
+				'tag' => xss_clean($cleantag),
 				'object' => $object,
 				'object_id' => $object_id,
 				'user_id' => $userid,
