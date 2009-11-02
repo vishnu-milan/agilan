@@ -23,7 +23,7 @@ class Welcome extends Controller {
 		$data['title'] = 'Please login or register!';
 		$data['main_view'] = 'welcome/home';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('login');
 
 		}
 	}
@@ -32,8 +32,7 @@ class Welcome extends Controller {
 		$u = $this->input->post('username');
 		$pw = $this->input->post('password');
 		$try = $this->m_users->verify_user($u,$pw);
-		
-		
+				
 		if ($try){
 			redirect('/agilan/index','refresh');
 		}else{
