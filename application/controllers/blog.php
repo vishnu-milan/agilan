@@ -3,8 +3,10 @@ session_start();
 
 class Blog extends Controller {
 
+	// Constructor method
 	function Blog()
 	{
+		// Call the parent constructor
 		parent::Controller();	
 		
 		if ($_SESSION['userid'] <= 0){
@@ -14,6 +16,7 @@ class Blog extends Controller {
 		
 	}
 	
+	// Index method
 	function index(){
 		$data['title'] = 'Blog';
 		$data['main_view'] = 'blog/blog_home';
@@ -26,7 +29,7 @@ class Blog extends Controller {
 		$this->load->view('template');
 	}
 	
-
+	// Method to view a blog post
 	function view_post($id){
 		$post = $this->m_posts->get_post($id);
 		$data['title'] = $post->title;
@@ -36,11 +39,13 @@ class Blog extends Controller {
 		$data['usernames'] = $this->m_users->list_user_names();
 		$data['post_tags'] = $this->m_tags->list_tag_objects_single($id,'posts');
 		$data['comments'] = $this->m_comments->list_comments_single($id,'posts');
+		// Loading vars and views
 		$this->load->vars($data);
 		$this->load->view('template');
 	
 	}
 
+	// Method to update the blog
 	function update(){
 		$data['title'] = 'Add Blog Post';
 		$data['main_view'] = 'blog/add_blog';
@@ -50,6 +55,7 @@ class Blog extends Controller {
 	
 	}
 	
+	// Method to insert the blog into the database
 	function insert(){
 
 		$try = $this->m_posts->add_post();
